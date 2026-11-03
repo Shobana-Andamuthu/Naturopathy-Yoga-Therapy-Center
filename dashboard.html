@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard — Sattva Naturopathy & Yoga Therapy</title>
+  <meta name="description" content="Patient dashboard for managing therapy bookings, viewing appointments, tracking treatment plans, and downloading receipts.">
+  
+  <!-- Preconnect to Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  
+  <!-- Immediate Theme & Direction Init -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('sattva_theme') || 'light';
+      const savedDir = localStorage.getItem('sattva_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute('dir', savedDir);
+      document.documentElement.setAttribute('lang', savedDir === 'rtl' ? 'ar' : 'en');
+    })();
+  </script>
+</head>
+<body>
+  <!-- Sattva Brand Page Loader -->
+  <div id="pageLoader" class="page-loader" role="status" aria-label="Loading Sattva Naturopathy &amp; Yoga">
+    <div class="page-loader-inner">
+      <div class="loader-pulse-aura" aria-hidden="true"></div>
+      <div class="loader-emblem-wrap" aria-hidden="true">
+        <svg class="loader-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="dashboard_load_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="dashboard_load_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="dashboard_load_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#dashboard_load_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#dashboard_load_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#dashboard_load_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+      </div>
+      <div class="loader-brand">
+        <span class="loader-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+        <span class="loader-brand-subtitle">NATUROPATHY &amp; YOGA</span>
+      </div>
+      <div class="loader-progress-track" aria-hidden="true">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="dash-container">
+
+    <!-- ==========================================================================
+         DASHBOARD NAVBAR (FULL WIDTH)
+         - Full width across the screen.
+         - Logo aligned left.
+         - RTL toggle, Light/Dark toggle, profile, and Logout controls aligned right.
+         - Controls do not overlap.
+         ========================================================================== -->
+    <header class="dash-navbar">
+      <!-- Left: Logo & Portal Title -->
+      <a href="index.html" class="dash-nav-brand" aria-label="Sattva Patient Portal">
+        <svg class="dash-nav-logo sattva-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="dashboard_dash_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="dashboard_dash_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="dashboard_dash_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#dashboard_dash_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#dashboard_dash_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#dashboard_dash_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+        <span class="sattva-divider" aria-hidden="true"></span>
+        <div class="dash-nav-title-group">
+          <span class="dash-nav-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+          <span class="dash-nav-badge">Patient Portal</span>
+        </div>
+      </a>
+
+      <!-- Right: RTL, Theme, Profile, and Logout -->
+      <div class="dash-nav-actions">
+        <!-- RTL Toggle -->
+        <button class="btn-icon" data-action="toggle-dir" aria-label="Toggle Direction" title="Toggle RTL/LTR">
+          <span class="rtl-label" style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;">RTL</span>
+        </button>
+
+        <!-- Light/Dark Mode Toggle -->
+        <button class="btn-icon theme-btn" data-action="toggle-theme" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+          <span class="theme-icon" data-icon="moon"></span>
+        </button>
+
+        <!-- Profile Badge (Desktop) -->
+        <a href="#profile" onclick="switchTab('profile')" class="dash-profile-btn" role="button" aria-label="Open Profile">
+          <img src="assets/images/patient-avatar.jpg" alt="Patient Ananya Sharma" class="dash-profile-avatar">
+          <div class="dash-profile-info">
+            <span class="dash-profile-name" id="navProfileName">Ananya Sharma</span>
+            <span class="dash-profile-id" id="navProfileUHID">UHID: SAT-8841</span>
+          </div>
+        </a>
+
+        <!-- Logout Button -->
+        <a href="login.html" onclick="handleLogout(event)" class="dash-logout-btn" aria-label="Sign Out" title="Sign Out">
+          <span data-icon="logOut"></span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ==========================================================================
+         MOBILE HORIZONTALLY SCROLLABLE NAVIGATION
+         - Placed directly below the navbar on mobile/tablet.
+         - Contains all 6 items: Overview, Book a Therapy, My Appointments,
+           Treatment Plans, Receipts, Profile.
+         - Active state clearly visible.
+         ========================================================================== -->
+    <nav class="dash-mobile-nav" aria-label="Mobile Patient Navigation">
+      <a href="#overview" class="dash-mobile-nav-link active" id="mob-link-overview" onclick="switchTab('overview')">
+        <span data-icon="activity"></span>
+        <span>Overview</span>
+      </a>
+      <a href="#book-therapy" class="dash-mobile-nav-link" id="mob-link-book-therapy" onclick="switchTab('book-therapy')">
+        <span data-icon="calendar"></span>
+        <span>Book a Therapy</span>
+      </a>
+      <a href="#appointments" class="dash-mobile-nav-link" id="mob-link-appointments" onclick="switchTab('appointments')">
+        <span data-icon="clock"></span>
+        <span>My Appointments</span>
+      </a>
+      <a href="#treatment-plans" class="dash-mobile-nav-link" id="mob-link-treatment-plans" onclick="switchTab('treatment-plans')">
+        <span data-icon="sparkles"></span>
+        <span>Treatment Plans</span>
+      </a>
+      <a href="#receipts" class="dash-mobile-nav-link" id="mob-link-receipts" onclick="switchTab('receipts')">
+        <span data-icon="fileText"></span>
+        <span>Receipts</span>
+      </a>
+      <a href="#profile" class="dash-mobile-nav-link" id="mob-link-profile" onclick="switchTab('profile')">
+        <span data-icon="user"></span>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Dashboard Body with Full-Height Sidebar & Main Viewport -->
+    <div class="dash-body">
+
+      <!-- ==========================================================================
+           DASHBOARD SIDEBAR (DESKTOP)
+           - Full available dashboard height.
+           - Include ONLY:
+             1. Overview
+             2. Book a Therapy
+             3. My Appointments
+             4. Treatment Plans
+             5. Receipts
+             6. Profile
+           ========================================================================== -->
+      <aside class="dash-sidebar" aria-label="Patient Portal Navigation">
+        <div class="dash-sidebar-nav">
+          <div class="dash-nav-section-title">Patient Menu</div>
+          
+          <a href="#overview" class="dash-nav-link active" id="side-link-overview" onclick="switchTab('overview')">
+            <span data-icon="activity"></span>
+            <span>Overview</span>
+          </a>
+
+          <a href="#book-therapy" class="dash-nav-link" id="side-link-book-therapy" onclick="switchTab('book-therapy')">
+            <span data-icon="calendar"></span>
+            <span>Book a Therapy</span>
+          </a>
+
+          <a href="#appointments" class="dash-nav-link" id="side-link-appointments" onclick="switchTab('appointments')">
+            <span data-icon="clock"></span>
+            <span>My Appointments</span>
+          </a>
+
+          <a href="#treatment-plans" class="dash-nav-link" id="side-link-treatment-plans" onclick="switchTab('treatment-plans')">
+            <span data-icon="sparkles"></span>
+            <span>Treatment Plans</span>
+          </a>
+
+          <a href="#receipts" class="dash-nav-link" id="side-link-receipts" onclick="switchTab('receipts')">
+            <span data-icon="fileText"></span>
+            <span>Receipts</span>
+          </a>
+
+          <a href="#profile" class="dash-nav-link" id="side-link-profile" onclick="switchTab('profile')">
+            <span data-icon="user"></span>
+            <span>Profile</span>
+          </a>
+        </div>
+
+        <div class="dash-sidebar-footer">
+          <div class="dash-emergency-card">
+            <div class="dash-emergency-title">Physician On-Duty Desk</div>
+            <div class="dash-emergency-desc">
+              Questions regarding current packs or detox symptoms? Clinic hotline: <strong>ext. 402</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ==========================================================================
+           MAIN CONTENT AREA
+           ========================================================================== -->
+      <main class="dash-main">
+
+        <!-- 1. TAB: OVERVIEW -->
+        <div id="tab-overview" class="dash-tab-pane">
+          <!-- Personalized Welcome Banner -->
+          <div class="dash-welcome-banner">
+            <div>
+              <h1 class="dash-welcome-title" id="welcomeHeading">Welcome back, Ananya</h1>
+              <p class="dash-welcome-subtitle">
+                Active Protocol: <strong>14-Day Vata-Pitta Metabolic Detox & Spine Alignment</strong> &bull; Attending: <strong>Dr. Arun Sharma</strong>
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button onclick="switchTab('book-therapy')" class="btn btn-primary btn-sm">
+                <span data-icon="calendar"></span>
+                <span>Book a Therapy</span>
+              </button>
+              <button onclick="switchTab('receipts')" class="btn btn-outline btn-sm">
+                <span data-icon="fileText"></span>
+                <span>View Receipts</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Summary Cards (At most 2 cards per row on iPad & iPad Pro, stacks on mobile) -->
+          <div class="dash-stats-grid" style="margin-top: var(--space-lg);">
+            <!-- Card 1: Upcoming Appointment Summary -->
+            <div class="dash-stat-card">
+              <div class="dash-stat-header">
+                <span class="dash-stat-label">Next Appointment</span>
+                <div class="dash-stat-icon"><span data-icon="clock"></span></div>
+              </div>
+              <div class="dash-stat-value" style="font-size: var(--text-xl);">Tomorrow &bull; 8:30 AM</div>
+              <div class="dash-stat-footer" style="color: var(--color-forest); font-weight: 600;">
+                Hydrotherapy & Spinal Spray Bath
+              </div>
+              <div style="font-size: 0.72rem; color: var(--color-text-subtle); margin-top: 0.2rem;">
+                Hydro Suite B &bull; Dr. Arun Sharma
+              </div>
+            </div>
+
+            <!-- Card 2: Current Treatment Plan Summary -->
+            <div class="dash-stat-card">
+              <div class="dash-stat-header">
+                <span class="dash-stat-label">Treatment Plan Progress</span>
+                <div class="dash-stat-icon"><span data-icon="sparkles"></span></div>
+              </div>
+              <div class="dash-stat-value">Day 6 <small style="font-size: 0.85rem; font-weight: 500; color: var(--color-text-muted);">/ 14</small></div>
+              <div class="dash-stat-footer">
+                <div style="display: flex; justify-content: space-between; font-size: var(--text-xs); margin-bottom: 0.25rem;">
+                  <span>Phase 2: Spine & Lymph</span>
+                  <strong>43%</strong>
+                </div>
+                <div style="width: 100%; height: 6px; background: var(--color-border-subtle); border-radius: var(--radius-pill); overflow: hidden;">
+                  <div style="width: 43%; height: 100%; background: var(--color-forest); border-radius: var(--radius-pill);"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Recent Receipt Summary -->
+            <div class="dash-stat-card">
+              <div class="dash-stat-header">
+                <span class="dash-stat-label">Recent Receipt</span>
+                <div class="dash-stat-icon"><span data-icon="fileText"></span></div>
+              </div>
+              <div class="dash-stat-value">$195.00</div>
+              <div class="dash-stat-footer">
+                Receipt #REC-2026-1082 &bull; <span class="dash-status-pill status-paid" style="font-size: 0.68rem; padding: 0.15rem 0.5rem;">Paid</span>
+              </div>
+              <div style="font-size: 0.72rem; color: var(--color-text-subtle); margin-top: 0.2rem;">
+                Nov 01, 2026 &bull; Hydrotherapy Pack
+              </div>
+            </div>
+
+            <!-- Card 4: Quick Action to Book a Therapy -->
+            <div class="dash-stat-card" style="justify-content: space-between; border-inline-start: 4px solid var(--color-sage);">
+              <div>
+                <div class="dash-stat-header">
+                  <span class="dash-stat-label">Quick Booking</span>
+                  <div class="dash-stat-icon"><span data-icon="calendar"></span></div>
+                </div>
+                <div style="font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; color: var(--color-text-main); margin-top: 0.35rem;">
+                  Schedule Next Session
+                </div>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 0.2rem;">
+                  Reserve mud packs, yoga, or doctor evaluations.
+                </p>
+              </div>
+              <button onclick="switchTab('book-therapy')" class="btn btn-outline btn-sm" style="width: fit-content; margin-top: 0.5rem;">
+                <span>Book Now</span>
+                <span data-icon="arrowRight" class="rtl-flip"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Appointments Preview on Overview -->
+          <div style="margin-top: var(--space-xl);">
+            <div class="dash-section-header">
+              <h2 class="dash-section-title">Schedule Highlights</h2>
+              <button onclick="switchTab('appointments')" class="btn btn-ghost btn-sm">
+                <span>View Full Schedule</span>
+                <span data-icon="chevronRight" class="rtl-flip"></span>
+              </button>
+            </div>
+
+            <div class="dash-table-card">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Therapy</th>
+                    <th>Date & Time</th>
+                    <th>Doctor / Practitioner</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewTableBody">
+                  <!-- Populated from appointments state -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. TAB: BOOK A THERAPY -->
+        <div id="tab-book-therapy" class="dash-tab-pane" style="display: none;">
+          <div class="dash-section-header">
+            <div>
+              <h2 class="dash-section-title">Book a Therapy Session</h2>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">
+                Select your desired natural therapy, preferred physician, and date to book an appointment.
+              </p>
+            </div>
+          </div>
+
+          <div style="background-color: var(--color-bg-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: clamp(1.25rem, 3vw, 2rem); max-width: 800px; margin-top: var(--space-md);">
+            <div style="padding: 0.75rem 1rem; border-radius: var(--radius-md); background: var(--color-sage-subtle); border-inline-start: 4px solid var(--color-sage); font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-lg);">
+              <strong>Demo Booking Flow:</strong> Appointments booked here will be dynamically added to your "My Appointments" schedule and stored locally in your browser.
+            </div>
+
+            <form id="bookTherapyForm" onsubmit="submitBooking(event)">
+              <div class="grid-2-equal" style="gap: var(--space-md);">
+                <div class="form-group">
+                  <label for="bookTherapy" class="form-label">Select Therapy Category</label>
+                  <select id="bookTherapy" class="form-select" required>
+                    <option value="Hydrotherapy & Spinal Spray Bath">Hydrotherapy & Spinal Spray Bath ($65)</option>
+                    <option value="Therapeutic Mineral Mud & Clay">Therapeutic Mineral Mud & Clay ($55)</option>
+                    <option value="Therapeutic Yoga Chikitsa">Therapeutic Yoga Chikitsa ($75)</option>
+                    <option value="Acupuncture & Pressure Points">Acupuncture & Pressure Points ($80)</option>
+                    <option value="Clinical Nutrition & Diet Consultation">Clinical Nutrition & Diet Consultation ($60)</option>
+                    <option value="Ayurvedic Warm Oil Abhyanga">Ayurvedic Warm Oil Abhyanga ($70)</option>
+                    <option value="Pranayama & Breath Regulation">Pranayama & Breath Regulation ($50)</option>
+                    <option value="Guided Relaxation & Yoga Nidra">Guided Relaxation & Yoga Nidra ($55)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookDoctor" class="form-label">Select Practitioner</label>
+                  <select id="bookDoctor" class="form-select" required>
+                    <option value="Dr. Arun Sharma (Chief Physician)">Dr. Arun Sharma (Chief Physician)</option>
+                    <option value="Dr. Priya Nair (Yoga Therapy Head)">Dr. Priya Nair (Yoga Therapy Head)</option>
+                    <option value="Dr. Meera Patel (Acupuncture Specialist)">Dr. Meera Patel (Acupuncture Specialist)</option>
+                    <option value="Dr. Kavita Sen (Clinical Dietetics)">Dr. Kavita Sen (Clinical Dietetics)</option>
+                    <option value="First Available Qualified Practitioner">First Available Qualified Practitioner</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2-equal" style="gap: var(--space-md);">
+                <div class="form-group">
+                  <label for="bookDate" class="form-label">Appointment Date</label>
+                  <input type="date" id="bookDate" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookTime" class="form-label">Available Time Slot</label>
+                  <select id="bookTime" class="form-select" required>
+                    <option value="08:00 AM – 09:00 AM">Morning: 08:00 AM – 09:00 AM</option>
+                    <option value="09:30 AM – 10:30 AM">Morning: 09:30 AM – 10:30 AM</option>
+                    <option value="11:00 AM – 12:00 PM">Noon: 11:00 AM – 12:00 PM</option>
+                    <option value="03:00 PM – 04:00 PM">Afternoon: 03:00 PM – 04:00 PM</option>
+                    <option value="05:00 PM – 06:00 PM">Evening: 05:00 PM – 06:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="bookNotes" class="form-label">Special Health Notes / Symptoms for this Session (Optional)</label>
+                <textarea id="bookNotes" class="form-textarea" rows="3" placeholder="E.g., Experiencing neck stiffness after long desk work, request prop support..."></textarea>
+              </div>
+
+              <div style="display: flex; gap: var(--space-sm); justify-content: flex-end; margin-top: var(--space-md); flex-wrap: wrap;">
+                <button type="button" class="btn btn-outline" onclick="switchTab('overview')">Cancel</button>
+                <button type="submit" class="btn btn-primary">
+                  <span data-icon="calendar"></span>
+                  <span>Confirm Appointment Reservation</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 3. TAB: MY APPOINTMENTS -->
+        <div id="tab-appointments" class="dash-tab-pane" style="display: none;">
+          <div class="dash-section-header">
+            <div>
+              <h2 class="dash-section-title">My Appointments</h2>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">
+                View your upcoming therapy sessions and past completed visits.
+              </p>
+            </div>
+            <button onclick="switchTab('book-therapy')" class="btn btn-primary btn-sm">
+              <span data-icon="calendar"></span>
+              <span>Book New Session</span>
+            </button>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="appointment-filters" style="margin-top: var(--space-md);">
+            <button class="filter-pill active" id="filterAll" onclick="filterAppointments('all')">All Appointments</button>
+            <button class="filter-pill" id="filterUpcoming" onclick="filterAppointments('upcoming')">Upcoming Only</button>
+            <button class="filter-pill" id="filterPast" onclick="filterAppointments('past')">Past / Completed</button>
+          </div>
+
+          <!-- Appointments Table -->
+          <div class="dash-table-card">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Therapy & Procedure</th>
+                  <th>Date & Time</th>
+                  <th>Practitioner</th>
+                  <th>Location Suite</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTableBody">
+                <!-- Dynamically rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4. TAB: TREATMENT PLANS -->
+        <div id="tab-treatment-plans" class="dash-tab-pane" style="display: none;">
+          <div class="dash-section-header">
+            <div>
+              <h2 class="dash-section-title">Clinical Treatment Plans & Progress</h2>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">
+                Track your active protocol, daily natural therapies, and monitored recovery vitals.
+              </p>
+            </div>
+          </div>
+
+          <div style="padding: 0.75rem 1rem; border-radius: var(--radius-md); background: var(--color-sage-subtle); border-inline-start: 4px solid var(--color-sage); font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+            <strong>Sample Clinical Record:</strong> This data reflects a structured 14-day sample protocol for demo purposes. It does not replace individualized diagnosis or emergency medical care.
+          </div>
+
+          <div class="grid-2-equal" style="gap: var(--space-lg);">
+            <!-- Left: Plan Details & Milestones -->
+            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+              <div style="background-color: var(--color-bg-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-sm); flex-wrap: wrap; gap: 0.5rem;">
+                  <div>
+                    <span class="badge" style="background: var(--color-forest-light); color: var(--color-forest); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: var(--radius-pill); text-transform: uppercase;">Active Protocol</span>
+                    <h3 style="font-size: var(--text-lg); margin-top: 0.35rem; color: var(--color-text-main);">
+                      14-Day Vata-Pitta Metabolic Detox & Spine Alignment
+                    </h3>
+                    <div style="font-size: var(--text-xs); color: var(--color-text-muted);">
+                      Prescribed by <strong>Dr. Arun Sharma, BNYS, MD</strong> &bull; Commenced: Oct 29, 2026
+                    </div>
+                  </div>
+                  <div style="font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 700; color: var(--color-forest);">
+                    Day 6 of 14
+                  </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div style="width: 100%; height: 10px; background-color: var(--color-border-subtle); border-radius: var(--radius-pill); overflow: hidden; margin-block: 1rem;">
+                  <div style="width: 43%; height: 100%; background: linear-gradient(90deg, var(--color-sage), var(--color-forest)); border-radius: var(--radius-pill);"></div>
+                </div>
+
+                <!-- Phases -->
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem;">
+                  <div style="padding: 0.85rem; border-radius: var(--radius-md); background-color: var(--color-bg-surface-subtle); border-inline-start: 4px solid var(--color-success);">
+                    <div style="display: flex; justify-content: space-between;">
+                      <strong style="font-size: var(--text-sm); color: var(--color-text-main);">Phase 1: Digestive Rest & Colon Detox (Days 1–5)</strong>
+                      <span class="dash-status-pill status-completed">Completed</span>
+                    </div>
+                    <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 0.2rem;">
+                      Cold abdominal clay pack &bull; Steamed ash gourd broth &bull; Digestion settled.
+                    </div>
+                  </div>
+
+                  <div style="padding: 0.85rem; border-radius: var(--radius-md); background-color: var(--color-sage-subtle); border-inline-start: 4px solid var(--color-forest);">
+                    <div style="display: flex; justify-content: space-between;">
+                      <strong style="font-size: var(--text-sm); color: var(--color-forest);">Phase 2: Lymphatic & Spine Realignment (Days 6–10)</strong>
+                      <span class="dash-status-pill status-active">In Progress</span>
+                    </div>
+                    <div style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 0.2rem;">
+                      Daily spinal spray hydrotherapy &bull; 1-on-1 restorative Yoga Chikitsa with Dr. Priya Nair.
+                    </div>
+                  </div>
+
+                  <div style="padding: 0.85rem; border-radius: var(--radius-md); background-color: var(--color-bg-surface-subtle); border-inline-start: 4px solid var(--color-border-medium);">
+                    <div style="display: flex; justify-content: space-between;">
+                      <strong style="font-size: var(--text-sm); color: var(--color-text-muted);">Phase 3: Vital Rejuvenation & Rasayana (Days 11–14)</strong>
+                      <span class="dash-status-pill status-pending">Upcoming</span>
+                    </div>
+                    <div style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: 0.2rem;">
+                      Warm herbal oil Abhyanga &bull; Lifestyle maintenance diet plan.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Regimen Card -->
+              <div style="background-color: var(--color-bg-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg);">
+                <h3 style="font-size: var(--text-md); margin-bottom: 0.75rem; color: var(--color-text-main);">Daily Prescribed Schedule</h3>
+                <ul style="display: flex; flex-direction: column; gap: 0.65rem; font-size: var(--text-sm); color: var(--color-text-muted);">
+                  <li><strong style="color: var(--color-forest);">06:30 AM:</strong> 16 oz warm water with fresh lemon; 20 min morning sunlight exposure.</li>
+                  <li><strong style="color: var(--color-forest);">08:30 AM:</strong> Hydrotherapy immersion or spinal spray at clinic suite.</li>
+                  <li><strong style="color: var(--color-forest);">12:30 PM:</strong> Steamed seasonal greens and barley broth; no raw foods after sunset.</li>
+                  <li><strong style="color: var(--color-forest);">08:30 PM:</strong> 15 minutes of quiet diaphragmatic pranayama before sleep.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right: Monitored Vitals -->
+            <div style="background-color: var(--color-bg-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md);">
+              <h3 style="font-size: var(--text-md); color: var(--color-text-main);">Monitored Recovery Vitals</h3>
+              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">
+                Recorded at center pulse checkpoints prior to morning therapies.
+              </p>
+
+              <div style="padding: 0.85rem; border-radius: var(--radius-md); background: var(--color-bg-surface-subtle); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: var(--text-xs); color: var(--color-text-muted);">Resting Blood Pressure</div>
+                  <div style="font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 700; color: var(--color-text-main);">118 / 76 mmHg</div>
+                </div>
+                <span class="dash-status-pill status-confirmed">Normal</span>
+              </div>
+
+              <div style="padding: 0.85rem; border-radius: var(--radius-md); background: var(--color-bg-surface-subtle); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: var(--text-xs); color: var(--color-text-muted);">Resting Heart Rate</div>
+                  <div style="font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 700; color: var(--color-text-main);">64 bpm</div>
+                </div>
+                <span class="dash-status-pill status-confirmed">Optimal</span>
+              </div>
+
+              <div style="padding: 0.85rem; border-radius: var(--radius-md); background: var(--color-bg-surface-subtle); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: var(--text-xs); color: var(--color-text-muted);">Digestive Vital Index</div>
+                  <div style="font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 700; color: var(--color-text-main);">8.5 / 10</div>
+                </div>
+                <span class="dash-status-pill status-confirmed">+32% Up</span>
+              </div>
+
+              <div style="padding: 0.85rem; border-radius: var(--radius-md); background: var(--color-bg-surface-subtle); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: var(--text-xs); color: var(--color-text-muted);">Systemic Inflammation (ESR)</div>
+                  <div style="font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 700; color: var(--color-text-main);">12 mm/hr</div>
+                </div>
+                <span class="dash-status-pill status-confirmed">Healthy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. TAB: RECEIPTS -->
+        <div id="tab-receipts" class="dash-tab-pane" style="display: none;">
+          <div class="dash-section-header">
+            <div>
+              <h2 class="dash-section-title">Therapy Receipts & Tax Invoices</h2>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">
+                Download official itemized receipts for medical reimbursement and tax records.
+              </p>
+            </div>
+            <button onclick="downloadAllReceipts()" class="btn btn-outline btn-sm">
+              <span data-icon="download"></span>
+              <span>Download All (Zip/Text)</span>
+            </button>
+          </div>
+
+          <div style="padding: 0.75rem 1rem; border-radius: var(--radius-md); background: var(--color-sage-subtle); border-inline-start: 4px solid var(--color-sage); font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+            <strong>Demo Financial Records:</strong> These sample receipts illustrate the itemized invoice generation workflow. No real financial payments have been processed or received.
+          </div>
+
+          <div class="dash-table-card">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Receipt #</th>
+                  <th>Service / Therapy Description</th>
+                  <th>Service Date</th>
+                  <th>Amount</th>
+                  <th>Payment Method</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>REC-2026-1049</strong></td>
+                  <td>Initial Naturopathic Comprehensive Evaluation & Diet Plan</td>
+                  <td>Oct 28, 2026</td>
+                  <td><strong>$150.00</strong></td>
+                  <td>Visa ending &bull;&bull;&bull;&bull; 4012</td>
+                  <td><span class="dash-status-pill status-paid"><span data-icon="check"></span> Paid</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm" onclick="downloadReceipt('REC-2026-1049', 'Initial Comprehensive Evaluation & Diet Plan', '$150.00', 'Oct 28, 2026', 'Visa ending 4012')">
+                      <span data-icon="download"></span>
+                      <span>Download Receipt</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>REC-2026-1082</strong></td>
+                  <td>Hydrotherapy & Spinal Spray Bath (3 Sessions Pack)</td>
+                  <td>Nov 01, 2026</td>
+                  <td><strong>$195.00</strong></td>
+                  <td>MasterCard ending &bull;&bull;&bull;&bull; 8891</td>
+                  <td><span class="dash-status-pill status-paid"><span data-icon="check"></span> Paid</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm" onclick="downloadReceipt('REC-2026-1082', 'Hydrotherapy & Spinal Spray (3 Sessions Pack)', '$195.00', 'Nov 01, 2026', 'MasterCard ending 8891')">
+                      <span data-icon="download"></span>
+                      <span>Download Receipt</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>REC-2026-1110</strong></td>
+                  <td>Therapeutic Yoga Chikitsa (2 Private Sessions)</td>
+                  <td>Nov 03, 2026</td>
+                  <td><strong>$140.00</strong></td>
+                  <td>Direct Debit / UPI</td>
+                  <td><span class="dash-status-pill status-paid"><span data-icon="check"></span> Paid</span></td>
+                  <td>
+                    <button class="btn btn-outline btn-sm" onclick="downloadReceipt('REC-2026-1110', 'Therapeutic Yoga Chikitsa (2 Private Sessions)', '$140.00', 'Nov 03, 2026', 'Direct Debit / UPI')">
+                      <span data-icon="download"></span>
+                      <span>Download Receipt</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 6. TAB: PROFILE -->
+        <div id="tab-profile" class="dash-tab-pane" style="display: none;">
+          <div class="dash-section-header">
+            <div>
+              <h2 class="dash-section-title">Patient Profile & Health Details</h2>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">
+                Update your contact details, emergency point-of-contact, and dietary preferences.
+              </p>
+            </div>
+          </div>
+
+          <div class="profile-card-layout" style="margin-top: var(--space-lg);">
+            <!-- Left: Avatar & Meta -->
+            <div class="profile-avatar-card">
+              <img src="assets/images/patient-avatar.jpg" alt="Patient profile portrait" class="profile-avatar-lg">
+              <h3 style="font-size: var(--text-lg); margin-bottom: 0.2rem; color: var(--color-text-main);" id="profileDisplayName">Ananya Sharma</h3>
+              <div style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600; margin-bottom: 0.75rem;" id="profileDisplayUHID">UHID: SAT-8841</div>
+              
+              <div style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.65rem; border-radius: var(--radius-pill); background: var(--color-forest-light); color: var(--color-forest); font-size: 0.72rem; font-weight: 600; margin-bottom: var(--space-md);">
+                <span data-icon="check"></span> Verified Patient
+              </div>
+
+              <div style="font-size: 0.75rem; color: var(--color-text-muted); text-align: start; width: 100%; border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm);">
+                <div>Registered: <strong>Oct 2026</strong></div>
+                <div style="margin-top: 0.25rem;">Center: <strong>Hill Station Main</strong></div>
+                <div style="margin-top: 0.25rem;">Doctor: <strong>Dr. Arun Sharma</strong></div>
+              </div>
+            </div>
+
+            <!-- Right: Editable Form -->
+            <div class="profile-form-card">
+              <div id="profileSaveFeedback" class="auth-feedback"></div>
+
+              <form id="profileForm" onsubmit="saveProfile(event)">
+                <div class="grid-2-equal" style="gap: var(--space-md);">
+                  <div class="form-group">
+                    <label for="profName" class="form-label">Full Name</label>
+                    <input type="text" id="profName" class="form-input" value="Ananya Sharma" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="profDob" class="form-label">Date of Birth</label>
+                    <input type="date" id="profDob" class="form-input" value="1992-06-18" required>
+                  </div>
+                </div>
+
+                <div class="grid-2-equal" style="gap: var(--space-md);">
+                  <div class="form-group">
+                    <label for="profEmail" class="form-label">Email Address</label>
+                    <input type="email" id="profEmail" class="form-input" value="ananya.sharma@example.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="profPhone" class="form-label">Contact Phone</label>
+                    <input type="tel" id="profPhone" class="form-input" value="+1 (555) 382-9912" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="profEmergency" class="form-label">Emergency Contact Name & Phone</label>
+                  <input type="text" id="profEmergency" class="form-input" value="Rahul Sharma (Spouse) — +1 (555) 382-9913" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="profDiet" class="form-label">Dietary Preferences & Health Notes</label>
+                  <textarea id="profDiet" class="form-textarea" rows="3">Vegetarian, sensitive to cold drafts, recovering from lumbar desk posture fatigue.</textarea>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: var(--space-sm); margin-top: var(--space-md);">
+                  <button type="submit" class="btn btn-primary">
+                    <span data-icon="check"></span>
+                    <span>Save Profile Changes</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="dashToast" class="dash-toast" role="status" aria-live="polite">
+    <span data-icon="check" style="color: var(--color-success); font-size: 1.25rem;"></span>
+    <span id="toastMessage">Action completed successfully.</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navigation.js"></script>
+  <script>
+    // State management for Appointments
+    let appointments = [
+      {
+        id: 1,
+        therapy: 'Hydrotherapy & Spinal Spray Bath',
+        date: 'Tomorrow',
+        time: '08:30 AM',
+        doctor: 'Dr. Arun Sharma',
+        suite: 'Hydro Suite B',
+        status: 'Confirmed',
+        isUpcoming: true
+      },
+      {
+        id: 2,
+        therapy: 'Therapeutic Mineral Mud & Clay',
+        date: 'Nov 05, 2026',
+        time: '10:15 AM',
+        doctor: 'Dr. Meera Patel',
+        suite: 'Earth Therapy Annex 2',
+        status: 'Confirmed',
+        isUpcoming: true
+      },
+      {
+        id: 3,
+        therapy: 'Therapeutic Yoga Chikitsa',
+        date: 'Nov 07, 2026',
+        time: '07:00 AM',
+        doctor: 'Dr. Priya Nair',
+        suite: 'Yoga Shala Garden Pavilion',
+        status: 'Scheduled',
+        isUpcoming: true
+      },
+      {
+        id: 4,
+        therapy: 'Initial Naturopathic Comprehensive Evaluation',
+        date: 'Oct 28, 2026',
+        time: '09:00 AM',
+        doctor: 'Dr. Arun Sharma',
+        suite: 'Consultation Suite 1',
+        status: 'Completed',
+        isUpcoming: false
+      },
+      {
+        id: 5,
+        therapy: 'Abdominal Mineral Mud Pack',
+        date: 'Oct 30, 2026',
+        time: '11:00 AM',
+        doctor: 'Dr. Meera Patel',
+        suite: 'Earth Therapy Annex 1',
+        status: 'Completed',
+        isUpcoming: false
+      }
+    ];
+
+    // Load any saved appointments from localStorage
+    try {
+      const stored = localStorage.getItem('sattva_patient_appointments');
+      if (stored) {
+        appointments = JSON.parse(stored);
+      }
+    } catch (e) {
+      console.warn('Could not load stored appointments', e);
+    }
+
+    // Tab Switching Logic
+    const VALID_TABS = ['overview', 'book-therapy', 'appointments', 'treatment-plans', 'receipts', 'profile'];
+
+    function switchTab(tabId) {
+      if (!VALID_TABS.includes(tabId)) tabId = 'overview';
+
+      // Hide all panes
+      document.querySelectorAll('.dash-tab-pane').forEach(el => el.style.display = 'none');
+      
+      // Show selected pane
+      const pane = document.getElementById('tab-' + tabId);
+      if (pane) pane.style.display = 'block';
+
+      // Update sidebar active classes
+      document.querySelectorAll('.dash-sidebar .dash-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      const sideLink = document.getElementById('side-link-' + tabId);
+      if (sideLink) sideLink.classList.add('active');
+
+      // Update mobile scrollable nav active classes
+      document.querySelectorAll('.dash-mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      const mobLink = document.getElementById('mob-link-' + tabId);
+      if (mobLink) mobLink.classList.add('active');
+
+      // Update URL hash cleanly
+      if (history.replaceState) {
+        history.replaceState(null, null, '#' + tabId);
+      }
+    }
+
+    // Toast helper
+    function showToast(message) {
+      const toast = document.getElementById('dashToast');
+      const msg = document.getElementById('toastMessage');
+      if (!toast || !msg) return;
+      msg.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    // Render appointments tables
+    function renderAppointments(filter = 'all') {
+      const tbody = document.getElementById('appointmentsTableBody');
+      const overviewTbody = document.getElementById('overviewTableBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      if (overviewTbody) overviewTbody.innerHTML = '';
+
+      let list = appointments;
+      if (filter === 'upcoming') list = appointments.filter(a => a.isUpcoming);
+      if (filter === 'past') list = appointments.filter(a => !a.isUpcoming);
+
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        const statusClass = item.status === 'Confirmed' ? 'status-confirmed' : item.status === 'Completed' ? 'status-completed' : 'status-pending';
+        
+        tr.innerHTML = `
+          <td>
+            <strong>${item.therapy}</strong>
+          </td>
+          <td>${item.date} &bull; ${item.time}</td>
+          <td>${item.doctor}</td>
+          <td>${item.suite}</td>
+          <td><span class="dash-status-pill ${statusClass}">${item.status}</span></td>
+          <td>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Appointment ID: #${item.id} — ${item.therapy}')">Details</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Overview preview (first 3 upcoming)
+      if (overviewTbody) {
+        const upcomingList = appointments.filter(a => a.isUpcoming).slice(0, 3);
+        upcomingList.forEach(item => {
+          const otr = document.createElement('tr');
+          const statusClass = item.status === 'Confirmed' ? 'status-confirmed' : 'status-pending';
+          otr.innerHTML = `
+            <td><strong>${item.therapy}</strong><div style="font-size: 0.72rem; color: var(--color-text-muted);">${item.suite}</div></td>
+            <td>${item.date} &bull; ${item.time}</td>
+            <td>${item.doctor}</td>
+            <td><span class="dash-status-pill ${statusClass}">${item.status}</span></td>
+          `;
+          overviewTbody.appendChild(otr);
+        });
+      }
+    }
+
+    function filterAppointments(type) {
+      document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('filter' + type.charAt(0).toUpperCase() + type.slice(1));
+      if (activeBtn) activeBtn.classList.add('active');
+      renderAppointments(type);
+    }
+
+    // Submit new booking
+    function submitBooking(e) {
+      e.preventDefault();
+      const therapy = document.getElementById('bookTherapy').value;
+      const doctor = document.getElementById('bookDoctor').value;
+      const date = document.getElementById('bookDate').value;
+      const time = document.getElementById('bookTime').value;
+
+      const newAppt = {
+        id: appointments.length + 1,
+        therapy: therapy,
+        date: date,
+        time: time,
+        doctor: doctor,
+        suite: 'Natural Care Suite ' + Math.floor(1 + Math.random() * 4),
+        status: 'Confirmed',
+        isUpcoming: true
+      };
+
+      appointments.unshift(newAppt);
+      try {
+        localStorage.setItem('sattva_patient_appointments', JSON.stringify(appointments));
+      } catch (err) {}
+
+      renderAppointments('all');
+      showToast(`Appointment Confirmed for ${therapy} on ${date}!`);
+      switchTab('appointments');
+    }
+
+    // Download itemized receipt text/invoice
+    function downloadReceipt(receiptId, therapy, amount, date, method) {
+      const patientName = localStorage.getItem('sattva_patient_name') || 'Ananya Sharma';
+      const patientUHID = localStorage.getItem('sattva_patient_uhid') || 'SAT-8841';
+
+      const content = `
+================================================================
+SATTVA NATUROPATHY & YOGA THERAPY CENTER
+OFFICIAL ITEMIZATION & TAX RECEIPT (SAMPLE DATA)
+================================================================
+Receipt Number: ${receiptId}
+Issue Date:     ${date || new Date().toLocaleDateString()}
+Patient Name:   ${patientName}
+Patient UHID:   ${patientUHID}
+
+Service Details:
+  Modality:     ${therapy}
+  Center:       Sattva Hill Station Sanctuary, 42 Serene Grove Way
+  Amount Paid:  ${amount}
+  Method:       ${method || 'Verified Online Payment'}
+  Status:       PAID / SETTLED IN FULL
+
+Accreditation:  NABH Accredited & Certified BNYS Medical Faculty
+Note:           This document is provided for medical tax reporting
+                and health reimbursement verification.
+================================================================
+`.trim();
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${receiptId}-Receipt.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`Downloaded official receipt #${receiptId}`);
+    }
+
+    function downloadAllReceipts() {
+      downloadReceipt('REC-ALL-SUMMARY', 'Consolidated 2026 Therapy Receipts Summary', '$485.00', 'Nov 03, 2026', 'Multiple Settled Methods');
+    }
+
+    // Save Profile
+    function saveProfile(e) {
+      e.preventDefault();
+      const name = document.getElementById('profName').value.trim();
+      const email = document.getElementById('profEmail').value.trim();
+      const phone = document.getElementById('profPhone').value.trim();
+
+      localStorage.setItem('sattva_patient_name', name);
+      localStorage.setItem('sattva_patient_email', email);
+      localStorage.setItem('sattva_patient_phone', phone);
+
+      // Update UI elements
+      document.getElementById('navProfileName').textContent = name;
+      document.getElementById('welcomeHeading').textContent = 'Welcome back, ' + name.split(' ')[0];
+      document.getElementById('profileDisplayName').textContent = name;
+
+      const feedback = document.getElementById('profileSaveFeedback');
+      feedback.textContent = 'Profile changes saved successfully in demo storage.';
+      feedback.className = 'auth-feedback success';
+      feedback.style.display = 'block';
+
+      showToast('Profile information updated successfully.');
+      setTimeout(() => {
+        feedback.style.display = 'none';
+      }, 3500);
+    }
+
+    // Handle Logout
+    function handleLogout(e) {
+      e.preventDefault();
+      localStorage.removeItem('sattva_is_logged_in');
+      window.location.href = 'login.html';
+    }
+
+    // Init on DOMContentLoaded
+    window.addEventListener('DOMContentLoaded', () => {
+      // Set tomorrow's date as default in booking
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dateStr = tomorrow.toISOString().split('T')[0];
+      const dateInput = document.getElementById('bookDate');
+      if (dateInput) dateInput.value = dateStr;
+
+      // Populate patient name from storage if available
+      const savedName = localStorage.getItem('sattva_patient_name');
+      const savedUHID = localStorage.getItem('sattva_patient_uhid');
+      if (savedName) {
+        document.getElementById('navProfileName').textContent = savedName;
+        document.getElementById('welcomeHeading').textContent = 'Welcome back, ' + savedName.split(' ')[0];
+        document.getElementById('profileDisplayName').textContent = savedName;
+        document.getElementById('profName').value = savedName;
+      }
+      if (savedUHID) {
+        document.getElementById('navProfileUHID').textContent = 'UHID: ' + savedUHID;
+        document.getElementById('profileDisplayUHID').textContent = 'UHID: ' + savedUHID;
+      }
+
+      // Render appointments
+      renderAppointments('all');
+
+      // Check URL hash
+      const hash = window.location.hash.replace('#', '');
+      if (hash && VALID_TABS.includes(hash)) {
+        switchTab(hash);
+      } else {
+        switchTab('overview');
+      }
+    });
+  </script>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <span data-icon="arrowUp"></span>
+  </button>
+</body>
+</html>

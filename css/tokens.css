@@ -1,0 +1,212 @@
+/**
+ * SATTVA NATUROPATHY & YOGA THERAPY CENTER
+ * DESIGN SYSTEM TOKENS
+ * Calm, modern, premium naturopathy & yoga therapy aesthetic.
+ */
+
+:root {
+  /* Brand Color Palette */
+  --color-sage: #78927A;
+  --color-sage-hover: #657F67;
+  --color-sage-light: #EBF1EC;
+  --color-sage-subtle: #F3F7F4;
+
+  --color-forest: #294638;
+  --color-forest-hover: #1E342A;
+  --color-forest-light: #E4ECE7;
+
+  --color-cream: #F7F4EA;
+  --color-cream-subtle: #FAF8F2;
+
+  --color-olive: #B7BE91;
+  --color-olive-hover: #A5AD7E;
+  --color-olive-light: #F4F6EC;
+
+  --color-earth: #8B7056;
+  --color-earth-hover: #755D45;
+  --color-earth-light: #F6F1EC;
+
+  --color-white: #FFFFFF;
+  --color-black: #111814;
+
+  /* Text & Surface Semantics (Light Theme Default) */
+  --color-text-main: #29352E;
+  --color-text-muted: #68756B;
+  --color-text-subtle: #8E9C91;
+  --color-text-inverse: #FFFFFF;
+
+  --color-bg-page: #F7F4EA;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-elevated: #FFFFFF;
+  --color-bg-surface-subtle: #FAF8F2;
+  --color-bg-input: #FFFFFF;
+
+  --color-border-subtle: rgba(41, 53, 46, 0.08);
+  --color-border-medium: rgba(41, 53, 46, 0.16);
+  --color-border-focus: #78927A;
+
+  --color-badge-bg: #EBF1EC;
+  --color-badge-text: #294638;
+
+  --color-success: #4A7A57;
+  --color-warning: #B37D28;
+  --color-danger: #AA473E;
+  --color-info: #5B7A8C;
+
+  /* Sattva Brand Identity Tokens (Recreated Vector Identity) */
+  --sattva-gold: #C5A059;
+  --sattva-gold-light: #DEB76C;
+  --sattva-gold-dark: #9E7832;
+  --sattva-gold-grad: linear-gradient(180deg, #DEB76C 0%, #C5A059 50%, #9E7832 100%);
+  --sattva-forest: #143D28;
+  --sattva-sprout: #4E8752;
+  --sattva-cradle: #1A5233;
+  --sattva-leaf-accent: #529450;
+  --sattva-vein: rgba(255, 255, 255, 0.85);
+  --sattva-vein-sub: rgba(255, 255, 255, 0.45);
+  --sattva-text: #143D28;
+  --sattva-subtext: #1E4A35;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);    /* 12-13px */
+  --text-sm: clamp(0.84rem, 0.82rem + 0.12vw, 0.9rem);       /* 13.5-14.5px */
+  --text-base: clamp(0.95rem, 0.92rem + 0.15vw, 1.05rem);    /* 15-16.8px */
+  --text-md: clamp(1.1rem, 1.05rem + 0.25vw, 1.25rem);      /* 17.5-20px */
+  --text-lg: clamp(1.28rem, 1.2rem + 0.4vw, 1.5rem);        /* 20.5-24px */
+  --text-xl: clamp(1.55rem, 1.4rem + 0.75vw, 1.95rem);      /* 25-31px */
+  --text-2xl: clamp(1.9rem, 1.65rem + 1.25vw, 2.5rem);      /* 30-40px */
+  --text-3xl: clamp(2.35rem, 2rem + 1.75vw, 3.25rem);       /* 38-52px */
+  --text-4xl: clamp(2.85rem, 2.35rem + 2.5vw, 4.25rem);     /* 45-68px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.18;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.62;
+  --line-height-relaxed: 1.78;
+
+  /* Spacing Tokens */
+  --space-3xs: 0.25rem;  /* 4px */
+  --space-2xs: 0.5rem;   /* 8px */
+  --space-xs: 0.75rem;   /* 12px */
+  --space-sm: 1rem;      /* 16px */
+  --space-md: 1.5rem;    /* 24px */
+  --space-lg: 2rem;      /* 32px */
+  --space-xl: 3rem;      /* 48px */
+  --space-2xl: 4.5rem;   /* 72px */
+  --space-3xl: 6.5rem;   /* 104px */
+
+  /* Containers */
+  --container-max: 1280px;
+  --container-narrow: 960px;
+  --container-wide: 1440px;
+  --container-padding: clamp(1rem, 3.5vw, 2.5rem);
+
+  /* Restrained Border Radii (no exaggerated bubble pills everywhere) */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+
+  /* Elevation / Shadows */
+  --shadow-xs: 0 1px 3px rgba(41, 53, 46, 0.05);
+  --shadow-sm: 0 2px 6px rgba(41, 53, 46, 0.06);
+  --shadow-md: 0 6px 18px rgba(41, 53, 46, 0.08);
+  --shadow-lg: 0 12px 32px rgba(41, 53, 46, 0.1);
+  --shadow-xl: 0 20px 48px rgba(41, 53, 46, 0.12);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout Heights */
+  --nav-height: 76px;
+  --dash-nav-height: 70px;
+  --dash-sidebar-width: 270px;
+  --dash-mobile-nav-height: 56px;
+}
+
+/* ==========================================================================
+   DARK THEME PALETTE
+   Calm, organic, high-contrast, non-glaring natural midnight hues.
+   ========================================================================== */
+[data-theme="dark"] {
+  --color-bg-page: #131A16;
+  --color-bg-surface: #1B2420;
+  --color-bg-surface-elevated: #232E29;
+  --color-bg-surface-subtle: #17201C;
+  --color-bg-input: #17211C;
+
+  --color-text-main: #EEF3EF;
+  --color-text-muted: #A1B2A5;
+  --color-text-subtle: #798C7F;
+  --color-text-inverse: #131A16;
+
+  --color-border-subtle: rgba(238, 243, 239, 0.09);
+  --color-border-medium: rgba(238, 243, 239, 0.18);
+  --color-border-focus: #8DA890;
+
+  --color-sage: #8DA890;
+  --color-sage-hover: #A0BBA3;
+  --color-sage-light: #223028;
+  --color-sage-subtle: #1C2621;
+
+  --color-forest: #A6C2AF;
+  --color-forest-hover: #BDD4C5;
+  --color-forest-light: #1F2C25;
+
+  --color-cream: #E5DEC9;
+  --color-cream-subtle: #1F2823;
+
+  --color-olive: #C3CB9E;
+  --color-olive-hover: #D5DCB3;
+  --color-olive-light: #2A3327;
+
+  --color-earth: #C9A788;
+  --color-earth-hover: #D8B99C;
+  --color-earth-light: #2C241E;
+
+  --color-badge-bg: #223028;
+  --color-badge-text: #C3DEC9;
+
+  /* Sattva Dark Mode Brand Tokens */
+  --sattva-gold: #D8B257;
+  --sattva-gold-light: #ECC776;
+  --sattva-gold-dark: #B58F3B;
+  --sattva-gold-grad: linear-gradient(180deg, #ECC776 0%, #D8B257 50%, #B58F3B 100%);
+  --sattva-forest: #DCE8DF;
+  --sattva-sprout: #6BB069;
+  --sattva-cradle: #2B6940;
+  --sattva-leaf-accent: #6DB566;
+  --sattva-text: #F7FAF7;
+  --sattva-subtext: #BFD4C3;
+
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.65);
+}
+
+/* ==========================================================================
+   RTL LOGICAL ADJUSTMENTS
+   ========================================================================== */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="ltr"] {
+  text-align: left;
+  direction: ltr;
+}
+

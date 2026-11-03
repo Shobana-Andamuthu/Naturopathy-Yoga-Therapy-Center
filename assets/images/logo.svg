@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" class="brand-logo-icon">
+  <!-- Lotus & Leaf Organic Emblem -->
+  <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.25" fill="none" />
+  <circle cx="24" cy="24" r="20" fill="currentColor" fill-opacity="0.08" />
+  <!-- Central Lotus Petal -->
+  <path d="M24 10C24 10 20 18 20 25C20 28.5 21.8 31 24 32C26.2 31 28 28.5 28 25C28 18 24 10 24 10Z" fill="currentColor" fill-opacity="0.85" />
+  <!-- Left Petal -->
+  <path d="M24 24C20.5 19 14 19 13 25C12 30 18 32 23 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Right Petal -->
+  <path d="M24 24C27.5 19 34 19 35 25C36 30 30 32 25 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Stem / Water Line -->
+  <path d="M16 35C20 37 28 37 32 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  <circle cx="24" cy="10" r="1.5" fill="currentColor" />
+</svg>
+

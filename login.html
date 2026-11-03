@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Portal Login — Sattva Naturopathy & Yoga Therapy</title>
+  <meta name="description" content="Sign in or register for the Sattva Patient Portal to book therapies, view personalized treatment plans, and access itemized receipts.">
+  
+  <!-- Preconnect to Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  
+  <!-- Immediate Theme & Direction Init -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('sattva_theme') || 'light';
+      const savedDir = localStorage.getItem('sattva_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute('dir', savedDir);
+      document.documentElement.setAttribute('lang', savedDir === 'rtl' ? 'ar' : 'en');
+    })();
+  </script>
+
+  <style>
+    /* Dedicated Split-Screen Login Styles */
+    .login-wrapper {
+      min-height: calc(100vh - var(--nav-height));
+      min-height: calc(100dvh - var(--nav-height));
+      display: flex;
+      width: 100%;
+    }
+
+    .login-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .login-split {
+        grid-template-columns: 1fr;
+      }
+      .login-visual-panel {
+        display: none !important;
+      }
+    }
+
+    /* Left Visual Panel */
+    .login-visual-panel {
+      position: relative;
+      background-color: var(--color-forest);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(2rem, 5vw, 4.5rem);
+      overflow: hidden;
+    }
+
+    .login-visual-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.42;
+      transition: transform 10s ease;
+    }
+
+    .login-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(14, 34, 23, 0.72) 0%, rgba(14, 34, 23, 0.88) 55%, rgba(10, 24, 16, 0.96) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .login-visual-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Right Form Panel */
+    .login-form-panel {
+      background-color: var(--color-bg-page);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+      overflow-y: auto;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 480px;
+      background-color: var(--color-bg-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .auth-tabs {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--color-border-subtle);
+      margin-bottom: var(--space-lg);
+    }
+
+    .auth-tab-btn {
+      flex: 1;
+      padding: 0.85rem 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+      line-height: 1.35;
+      min-height: 52px;
+      white-space: nowrap;
+    }
+
+    .auth-tab-btn.active {
+      color: var(--color-forest);
+      border-bottom-color: var(--color-forest);
+    }
+
+    [data-theme="dark"] .auth-tab-btn.active {
+      color: var(--color-sage);
+      border-bottom-color: var(--color-sage);
+    }
+
+    @media (max-width: 420px) {
+      .auth-tab-btn {
+        font-size: var(--text-xs);
+        padding-inline: 0.4rem;
+        white-space: normal;
+      }
+    }
+
+    .password-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-toggle-btn {
+      position: absolute;
+      inset-inline-end: 0.75rem;
+      background: none;
+      border: none;
+      color: var(--color-text-subtle);
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .password-toggle-btn:hover {
+      color: var(--color-text-main);
+    }
+
+    /* Demo Alert Notice */
+    .demo-notice-badge {
+      background: var(--color-sage-subtle);
+      border: 1px dashed var(--color-sage);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      margin-bottom: var(--space-md);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Feedback message container */
+    .auth-feedback {
+      padding: 0.65rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      margin-bottom: var(--space-md);
+      display: none;
+    }
+
+    .auth-feedback.success {
+      background-color: rgba(74, 122, 87, 0.15);
+      color: var(--color-success);
+      display: block;
+    }
+
+    .auth-feedback.error {
+      background-color: rgba(170, 71, 62, 0.15);
+      color: var(--color-danger);
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sattva Brand Page Loader -->
+  <div id="pageLoader" class="page-loader" role="status" aria-label="Loading Sattva Naturopathy &amp; Yoga">
+    <div class="page-loader-inner">
+      <div class="loader-pulse-aura" aria-hidden="true"></div>
+      <div class="loader-emblem-wrap" aria-hidden="true">
+        <svg class="loader-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="login_load_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="login_load_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="login_load_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#login_load_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#login_load_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#login_load_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+      </div>
+      <div class="loader-brand">
+        <span class="loader-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+        <span class="loader-brand-subtitle">NATUROPATHY &amp; YOGA</span>
+      </div>
+      <div class="loader-progress-track" aria-hidden="true">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LOGIN NAVBAR (Full-width, Logo left, ONLY Light/Dark & RTL on right, No regular nav links) -->
+  <header class="site-header" style="position: sticky; top: 0; z-index: 100;">
+    <div class="container-fluid" style="padding-inline: clamp(1rem, 3vw, 2.5rem);">
+      <nav class="navbar" aria-label="Login Header" style="height: var(--nav-height); justify-content: space-between;">
+        <!-- Logo on the left -->
+        <a href="index.html" class="nav-brand" aria-label="Sattva Patient Portal">
+          <svg class="nav-brand-logo sattva-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="login_nav_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="login_nav_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="login_nav_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#login_nav_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#login_nav_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#login_nav_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+          <span class="sattva-divider" aria-hidden="true"></span>
+          <div class="nav-brand-text">
+            <span class="nav-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+            <span class="nav-brand-subtitle">Patient Portal</span>
+          </div>
+        </a>
+
+        <!-- Direction (RTL / LTR) & Light Mode/Theme icons on the right -->
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <!-- Direction (RTL / LTR) Toggle Button -->
+          <button class="btn-icon rtl-toggle" data-action="toggle-dir" aria-label="Toggle Direction" title="Toggle RTL/LTR">
+            <span class="rtl-label" style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;">RTL</span>
+          </button>
+          <!-- Light/Dark Mode Toggle Button -->
+          <button class="btn-icon theme-btn" data-action="toggle-theme" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+            <span class="theme-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Full-Width Split-Screen Layout -->
+  <main class="login-wrapper">
+    <div class="login-split">
+      
+      <!-- LEFT PANEL: Calm Wellness Imagery & Welcoming Narrative -->
+      <section class="login-visual-panel">
+        <img src="assets/images/login-bg.jpg" alt="Tranquil forest sanctuary and morning sunlight" class="login-visual-img">
+        <div class="login-visual-overlay" aria-hidden="true"></div>
+        
+        <!-- Top Badge -->
+        <div class="login-visual-content">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.95rem; border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(8px); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.04em;">
+            <span data-icon="sparkles" style="color: #DEB76C;"></span>
+            <span>Your Personal Wellness Sanctuary</span>
+          </div>
+        </div>
+
+        <!-- Middle / Bottom Welcoming Message -->
+        <div class="login-visual-content" style="max-width: 480px;">
+          <blockquote style="font-family: var(--font-heading); font-size: clamp(1.4rem, 2.5vw, 1.95rem); line-height: 1.3; margin-bottom: 1.25rem; font-style: italic; color: #FFFFFF !important; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
+            “Health is a state of complete harmony of the body, mind and spirit.”
+          </blockquote>
+          <p style="font-size: var(--text-sm); color: #E8F2EA !important; line-height: 1.65; margin-bottom: var(--space-lg); text-shadow: 0 1px 2px rgba(0,0,0,0.4);">
+            Access your personalized natural therapy schedule, view physician notes, follow your progress, and download itemized medical receipts at your own pace.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: var(--text-xs); color: #F0F7F2; padding-top: var(--space-md); border-top: 1px solid rgba(255, 255, 255, 0.25);">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span data-icon="check" style="color: #DEB76C;"></span> 100% Confidential Patient Health Record Portal
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span data-icon="check" style="color: #DEB76C;"></span> Direct Communication with Consulting BNYS Physicians
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span data-icon="check" style="color: #DEB76C;"></span> Printable PDF Receipts for Insurance & Tax Records
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL: Clean Login & Sign-Up Forms -->
+      <section class="login-form-panel">
+        <div class="login-card">
+
+          <!-- Auth Mode Tabs (Sign In / New Patient) -->
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab-btn active" id="tabBtnSignIn" onclick="switchAuthTab('signin')" role="tab" aria-selected="true">
+              Sign In
+            </button>
+            <button class="auth-tab-btn" id="tabBtnSignUp" onclick="switchAuthTab('signup')" role="tab" aria-selected="false">
+              New Patient Registration
+            </button>
+          </div>
+
+          <!-- Feedback Alert Banner -->
+          <div id="authFeedback" class="auth-feedback" role="alert"></div>
+
+          <!-- SIGN IN FORM -->
+          <form id="signInForm" onsubmit="handleSignIn(event)">
+            <div class="demo-notice-badge">
+              <strong>Demo Environment:</strong> You can sign in using sample credentials below or click the one-click demo button to explore the dashboard immediately.
+            </div>
+
+            <div class="form-group">
+              <label for="loginIdentifier" class="form-label">Email or Phone Number</label>
+              <input type="text" id="loginIdentifier" class="form-input" placeholder="ananya.sharma@example.com" value="ananya.sharma@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label for="loginPassword" class="form-label">Password</label>
+                <a href="#forgot" onclick="handleForgotPassword(event)" style="font-size: var(--text-xs); color: var(--color-sage); font-weight: 500;">Forgot password?</a>
+              </div>
+              <div class="password-input-wrap">
+                <input type="password" id="loginPassword" class="form-input" placeholder="••••••••••••" value="sattva2026" required style="padding-inline-end: 2.5rem;">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">
+                  <span data-icon="eye"></span>
+                </button>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md);">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: var(--text-xs); color: var(--color-text-muted); cursor: pointer;">
+                <input type="checkbox" id="rememberMe" checked style="accent-color: var(--color-forest);">
+                <span>Remember me on this device</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding-block: 0.85rem; font-size: var(--text-sm);">
+              <span data-icon="user"></span>
+              <span>Sign In to Dashboard</span>
+            </button>
+
+            <!-- One-Click Demo Access -->
+            <button type="button" onclick="quickDemoLogin()" class="btn btn-outline btn-sm" style="width: 100%; margin-top: 0.75rem;">
+              <span>One-Click Demo Sign In</span>
+              <span data-icon="arrowRight" class="rtl-flip"></span>
+            </button>
+
+            <div style="margin-top: var(--space-md); text-align: center; font-size: var(--text-xs); color: var(--color-text-muted);">
+              First time visiting Sattva?
+              <a href="#" onclick="switchAuthTab('signup'); return false;" style="color: var(--color-forest); font-weight: 600; text-decoration: underline;">
+                Create your patient account
+              </a>
+            </div>
+          </form>
+
+          <!-- SIGN UP / REGISTRATION FORM -->
+          <form id="signUpForm" onsubmit="handleSignUp(event)" style="display: none;">
+            <div class="demo-notice-badge">
+              <strong>New Patient Registration:</strong> Fill in your information to initialize your demo patient profile and immediate access to booking.
+            </div>
+
+            <div class="form-group">
+              <label for="regName" class="form-label">Full Legal Name</label>
+              <input type="text" id="regName" class="form-input" placeholder="Ananya Sharma" required>
+            </div>
+
+            <div class="grid-2-equal" style="gap: 0.75rem;">
+              <div class="form-group">
+                <label for="regEmail" class="form-label">Email Address</label>
+                <input type="email" id="regEmail" class="form-input" placeholder="name@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="regPhone" class="form-label">Phone Number</label>
+                <input type="tel" id="regPhone" class="form-input" placeholder="+1 (555) 000-0000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regPassword" class="form-label">Create Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="regPassword" class="form-input" placeholder="At least 8 characters" required minlength="8" style="padding-inline-end: 2.5rem;">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">
+                  <span data-icon="eye"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="regConfirmPassword" class="form-input" placeholder="Re-enter password" required minlength="8" style="padding-inline-end: 2.5rem;">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regConfirmPassword', this)" aria-label="Toggle password visibility">
+                  <span data-icon="eye"></span>
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-bottom: var(--space-md);">
+              <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: var(--text-xs); color: var(--color-text-muted); cursor: pointer;">
+                <input type="checkbox" required style="accent-color: var(--color-forest); margin-top: 0.15rem;">
+                <span>I agree to the center's privacy guidelines and consent to digital appointment management.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding-block: 0.85rem; font-size: var(--text-sm);">
+              <span data-icon="sparkles"></span>
+              <span>Register & Enter Portal</span>
+            </button>
+
+            <div style="margin-top: var(--space-md); text-align: center; font-size: var(--text-xs); color: var(--color-text-muted);">
+              Already have an account?
+              <a href="#" onclick="switchAuthTab('signin'); return false;" style="color: var(--color-forest); font-weight: 600; text-decoration: underline;">
+                Sign in here
+              </a>
+            </div>
+          </form>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  
+
+  <!-- Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/theme.js"></script>
+  <script>
+    // Tab switching between Sign In and Sign Up
+    function switchAuthTab(tab) {
+      const signInForm = document.getElementById('signInForm');
+      const signUpForm = document.getElementById('signUpForm');
+      const tabBtnSignIn = document.getElementById('tabBtnSignIn');
+      const tabBtnSignUp = document.getElementById('tabBtnSignUp');
+      const feedback = document.getElementById('authFeedback');
+      
+      feedback.className = 'auth-feedback';
+      feedback.style.display = 'none';
+
+      if (tab === 'signup') {
+        signInForm.style.display = 'none';
+        signUpForm.style.display = 'block';
+        tabBtnSignIn.classList.remove('active');
+        tabBtnSignUp.classList.add('active');
+        tabBtnSignIn.setAttribute('aria-selected', 'false');
+        tabBtnSignUp.setAttribute('aria-selected', 'true');
+      } else {
+        signUpForm.style.display = 'none';
+        signInForm.style.display = 'block';
+        tabBtnSignUp.classList.remove('active');
+        tabBtnSignIn.classList.add('active');
+        tabBtnSignUp.setAttribute('aria-selected', 'false');
+        tabBtnSignIn.setAttribute('aria-selected', 'true');
+      }
+    }
+
+    // Toggle password show/hide
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      btn.innerHTML = isPassword ? SVGIcons.eyeOff : SVGIcons.eye;
+    }
+
+    // Show feedback alert
+    function showFeedback(message, type) {
+      const feedback = document.getElementById('authFeedback');
+      feedback.textContent = message;
+      feedback.className = `auth-feedback ${type}`;
+      feedback.style.display = 'block';
+    }
+
+    // Forgot password demo handler
+    function handleForgotPassword(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('loginIdentifier').value.trim() || 'ananya.sharma@example.com';
+      showFeedback(`Password reset link generated for demo account (${identifier}). In production, a secure SMS/Email OTP is dispatched.`, 'success');
+    }
+
+    // Handle Sign In submission
+    function handleSignIn(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('loginIdentifier').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (!identifier || !password) {
+        showFeedback('Please provide both your registered email/phone and password.', 'error');
+        return;
+      }
+
+      showFeedback('Signing in securely to demo patient portal...', 'success');
+      localStorage.setItem('sattva_patient_name', 'Ananya Sharma');
+      localStorage.setItem('sattva_patient_uhid', 'SAT-8841');
+      localStorage.setItem('sattva_is_logged_in', 'true');
+
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 600);
+    }
+
+    // Quick One-Click Demo Sign In
+    function quickDemoLogin() {
+      document.getElementById('loginIdentifier').value = 'ananya.sharma@example.com';
+      document.getElementById('loginPassword').value = 'sattva2026';
+      handleSignIn(new Event('submit'));
+    }
+
+    // Handle Sign Up submission
+    function handleSignUp(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+      if (password !== confirmPassword) {
+        showFeedback('Passwords do not match. Please re-enter matching passwords.', 'error');
+        return;
+      }
+
+      if (password.length < 8) {
+        showFeedback('Password must be at least 8 characters long.', 'error');
+        return;
+      }
+
+      showFeedback(`Account created successfully for ${name}! Initializing demo patient profile...`, 'success');
+      localStorage.setItem('sattva_patient_name', name);
+      localStorage.setItem('sattva_patient_email', email);
+      localStorage.setItem('sattva_patient_phone', phone);
+      localStorage.setItem('sattva_patient_uhid', 'SAT-' + Math.floor(1000 + Math.random() * 9000));
+      localStorage.setItem('sattva_is_logged_in', 'true');
+
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 800);
+    }
+  </script>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <span data-icon="arrowUp"></span>
+  </button>
+</body>
+</html>

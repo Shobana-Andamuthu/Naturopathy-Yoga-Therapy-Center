@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors & Practitioners — Sattva Naturopathy & Yoga Therapy</title>
+  <meta name="description" content="Meet our university-qualified naturopathic physicians and certified yoga therapists dedicated to unhurried, evidence-based natural wellness care.">
+  
+  <!-- Preconnect to Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  
+  <!-- Immediate Theme & Direction Init -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('sattva_theme') || 'light';
+      const savedDir = localStorage.getItem('sattva_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute('dir', savedDir);
+      document.documentElement.setAttribute('lang', savedDir === 'rtl' ? 'ar' : 'en');
+    })();
+  </script>
+</head>
+<body>
+  <!-- Sattva Brand Page Loader -->
+  <div id="pageLoader" class="page-loader" role="status" aria-label="Loading Sattva Naturopathy &amp; Yoga">
+    <div class="page-loader-inner">
+      <div class="loader-pulse-aura" aria-hidden="true"></div>
+      <div class="loader-emblem-wrap" aria-hidden="true">
+        <svg class="loader-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="doctors_load_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="doctors_load_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="doctors_load_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#doctors_load_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#doctors_load_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#doctors_load_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+      </div>
+      <div class="loader-brand">
+        <span class="loader-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+        <span class="loader-brand-subtitle">NATUROPATHY &amp; YOGA</span>
+      </div>
+      <div class="loader-progress-track" aria-hidden="true">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Shared Public Header / Navbar -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <!-- Logo Left -->
+        <a href="index.html" class="nav-brand" aria-label="Sattva NATUROPATHY & YOGA">
+          <svg class="nav-brand-logo sattva-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="doctors_nav_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="doctors_nav_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="doctors_nav_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#doctors_nav_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#doctors_nav_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#doctors_nav_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+          <span class="sattva-divider" aria-hidden="true"></span>
+          <div class="nav-brand-text">
+            <span class="nav-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+            <span class="nav-brand-subtitle">NATUROPATHY &amp; YOGA</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu">
+          <li class="nav-item nav-dropdown">
+            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              <span>Home</span>
+              <span class="dropdown-arrow" data-icon="chevronDown"></span>
+            </button>
+            <div class="dropdown-menu">
+              <a href="index.html" class="dropdown-item">Home 1 — The Natural Path</a>
+              <a href="home-2.html" class="dropdown-item">Home 2 — A Space to Reconnect</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="therapies.html" class="nav-link">Therapies</a>
+          </li>
+          <li class="nav-item">
+            <a href="doctors.html" class="nav-link active">Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+          </li>
+        </ul>
+
+        <!-- Nav Controls & Actions -->
+        <div class="nav-actions">
+          <button class="btn-icon rtl-toggle" data-action="toggle-dir" aria-label="Toggle Direction" title="Toggle RTL/LTR">
+            <span class="rtl-label" style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;">RTL</span>
+          </button>
+
+          <button class="btn-icon theme-toggle theme-btn" data-action="toggle-theme" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+            <span class="theme-icon" data-icon="moon"></span>
+          </button>
+
+          <!-- Secondary Login Button next to Main CTA -->
+          <a href="login.html" class="btn btn-outline btn-sm nav-login-btn">
+            <span data-icon="user"></span>
+            <span>Login</span>
+          </a>
+
+          <a href="dashboard.html#book" class="btn btn-primary btn-sm nav-cta">
+            <span data-icon="calendar"></span>
+            <span>Book a Therapy</span>
+          </a>
+
+          <button class="mobile-nav-toggle" data-action="open-mobile-nav" aria-label="Open Navigation Menu">
+            <span data-icon="menu"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile & iPad Navigation Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawer" aria-hidden="true">
+    <aside class="mobile-drawer" aria-label="Navigation Menu">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="nav-brand" aria-label="Sattva NATUROPATHY &amp; YOGA">
+          <svg class="nav-brand-logo sattva-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="doc_draw_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="doc_draw_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="doc_draw_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#doc_draw_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#doc_draw_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#doc_draw_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+          <span class="sattva-divider" aria-hidden="true"></span>
+          <div class="nav-brand-text">
+            <span class="nav-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+            <span class="nav-brand-subtitle">NATUROPATHY &amp; YOGA</span>
+          </div>
+        </a>
+        <!-- Mobile Drawer Header Actions (RTL, Theme & Close matching Desktop Nav Controls) -->
+        <div class="mobile-drawer-actions">
+          <button class="btn-icon rtl-toggle" data-action="toggle-dir" aria-label="Toggle Direction" title="Toggle RTL/LTR">
+            <span class="rtl-label" style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;">RTL</span>
+          </button>
+          <button class="btn-icon theme-toggle theme-btn" data-action="toggle-theme" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+            <span class="theme-icon" data-icon="moon"></span>
+          </button>
+          <button class="btn-icon" data-action="close-mobile-nav" aria-label="Close menu">
+            <span data-icon="x"></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-drawer-body">
+
+        <ul class="mobile-drawer-links">
+          <li class="mobile-drawer-item mobile-drawer-dropdown">
+            <button class="mobile-drawer-link mobile-dropdown-toggle " data-home-parent aria-expanded="false" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span>Home</span>
+              <span class="dropdown-arrow" data-icon="chevronDown"></span>
+            </button>
+            <div class="mobile-sublinks mobile-dropdown-content" style="display: none;">
+              <a href="index.html" class="mobile-sublink ">Home 1 — The Natural Path</a>
+              <a href="home-2.html" class="mobile-sublink ">Home 2 — A Space to Reconnect</a>
+            </div>
+          </li>
+          <li class="mobile-drawer-item">
+            <a href="about.html" class="mobile-drawer-link ">About</a>
+          </li>
+          <li class="mobile-drawer-item">
+            <a href="therapies.html" class="mobile-drawer-link ">Therapies</a>
+          </li>
+          <li class="mobile-drawer-item">
+            <a href="doctors.html" class="mobile-drawer-link active">Doctors</a>
+          </li>
+          <li class="mobile-drawer-item">
+            <a href="contact.html" class="mobile-drawer-link ">Contact</a>
+          </li>
+          <li class="mobile-drawer-item">
+            <a href="dashboard.html" class="mobile-drawer-link">Dashboard</a>
+          </li>
+        </ul>
+
+        <div style="margin-top: auto; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.65rem;">
+          <a href="login.html" class="btn btn-outline" style="width: 100%;">
+            <span data-icon="user"></span>
+            <span>Login</span>
+          </a>
+          <a href="dashboard.html#book" class="btn btn-primary" style="width: 100%;">
+            <span data-icon="calendar"></span>
+            <span>Book a Therapy</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 1 — PAGE INTRO
+         - Heading: “Meet Our Doctors & Practitioners”.
+         - Short introduction to the professional team.
+         - Shared non-home page intro component (.page-intro) matching Therapies page.
+         ========================================================================== -->
+    <section class="page-intro">
+      <div class="container">
+        <div class="page-intro-inner">
+          <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <span class="breadcrumb-item"><a href="index.html">Home</a></span>
+            <span class="breadcrumb-separator">&sol;</span>
+            <span class="breadcrumb-item" aria-current="page">Doctors & Practitioners</span>
+          </nav>
+          <h1 class="page-intro-title">Meet Our Doctors & Practitioners</h1>
+          <p class="page-intro-desc">
+            Our certified naturopathic physicians and licensed yoga therapists bring university degrees and clinical experience to your healing journey, offering attentive, personalized guidance in a peaceful atmosphere.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2 — OUR MEDICAL & WELLNESS TEAM
+         - Professional profile cards.
+         - Each card includes portrait, name, role, and a concise biography.
+         - Uses verified names, qualifications, and credentials only.
+         - Maximum two cards per row on iPad and iPad Pro (.grid-2-cards).
+         - Unique portrait images (no overlap with Home 1, Home 2, or Therapies).
+         ========================================================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Clinical Faculty</span>
+          <h2 class="section-title">Experienced Healthcare Practitioners</h2>
+          <p class="section-desc">
+            All practitioners hold recognized Bachelor of Naturopathy & Yogic Sciences (BNYS) degrees with specialized post-graduate clinical training.
+          </p>
+        </div>
+
+        <!-- Strict Maximum Two Cards Per Row Grid -->
+        <div class="grid-2-cards">
+
+          <!-- Doctor 1: Dr. Arun Sharma -->
+          <article class="card doctor-card">
+            <div class="card-media">
+              <img src="assets/images/doctors-team-arun.jpg" alt="Dr. Arun Sharma, Chief Naturopathic Physician">
+              <span class="card-badge">Chief Medical Director</span>
+            </div>
+            <div class="card-body">
+              <div class="doctor-spec">BNYS, MD (Naturopathy)</div>
+              <h3 class="card-title">Dr. Arun Sharma</h3>
+              <div class="doctor-exp" style="margin-bottom: var(--space-xs);">
+                <span data-icon="sparkles"></span>
+                <span>22 Years Clinical Practice</span>
+              </div>
+              <p class="card-desc">
+                Oversees clinical operations, specializing in autonomic nervous system regulation, supervised therapeutic fasting, and evidence-based hydrotherapy immersion protocols.
+              </p>
+              <div class="card-footer">
+                <span style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600;">Mon &bull; Wed &bull; Fri Consultations</span>
+                <a href="dashboard.html" class="btn btn-outline btn-sm">
+                  <span>Book Consultation</span>
+                  <span data-icon="calendar"></span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Doctor 2: Dr. Priya Nair -->
+          <article class="card doctor-card">
+            <div class="card-media">
+              <img src="assets/images/doctors-team-priya.jpg" alt="Dr. Priya Nair, Head of Yoga Therapy">
+              <span class="card-badge">Head of Yoga Therapy</span>
+            </div>
+            <div class="card-body">
+              <div class="doctor-spec">BNYS, M.Sc (Yoga Therapy)</div>
+              <h3 class="card-title">Dr. Priya Nair</h3>
+              <div class="doctor-exp" style="margin-bottom: var(--space-xs);">
+                <span data-icon="sparkles"></span>
+                <span>15 Years Clinical Practice</span>
+              </div>
+              <p class="card-desc">
+                Focuses on therapeutic musculoskeletal asana correction, spine alignment, gentle mobility adaptations, and diaphragmatic pranayama for sustained mental ease.
+              </p>
+              <div class="card-footer">
+                <span style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600;">Daily &bull; Morning Sessions</span>
+                <a href="dashboard.html" class="btn btn-outline btn-sm">
+                  <span>Book Session</span>
+                  <span data-icon="calendar"></span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Doctor 3: Dr. Meera Patel -->
+          <article class="card doctor-card">
+            <div class="card-media">
+              <img src="assets/images/doctors-team-meera.jpg" alt="Dr. Meera Patel, Acupuncture & Hydrotherapy Specialist">
+              <span class="card-badge">Acupuncture Specialist</span>
+            </div>
+            <div class="card-body">
+              <div class="doctor-spec">BNYS, Dipl. Acupuncture</div>
+              <h3 class="card-title">Dr. Meera Patel</h3>
+              <div class="doctor-exp" style="margin-bottom: var(--space-xs);">
+                <span data-icon="sparkles"></span>
+                <span>12 Years Clinical Practice</span>
+              </div>
+              <p class="card-desc">
+                Expertise in micro-meridian stimulation, pressure-point reflexology, and therapeutic mineral mud applications designed to alleviate joint and muscular tension.
+              </p>
+              <div class="card-footer">
+                <span style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600;">Tue &bull; Thu &bull; Sat Consultations</span>
+                <a href="dashboard.html" class="btn btn-outline btn-sm">
+                  <span>Book Treatment</span>
+                  <span data-icon="calendar"></span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Doctor 4: Dr. Kavita Sen -->
+          <article class="card doctor-card">
+            <div class="card-media">
+              <img src="assets/images/doctors-team-kavita.jpg" alt="Dr. Kavita Sen, Clinical Dietetics & Nutrition Specialist">
+              <span class="card-badge">Clinical Dietetics</span>
+            </div>
+            <div class="card-body">
+              <div class="doctor-spec">BNYS, Clinical Dietetics</div>
+              <h3 class="card-title">Dr. Kavita Sen</h3>
+              <div class="doctor-exp" style="margin-bottom: var(--space-xs);">
+                <span data-icon="sparkles"></span>
+                <span>10 Years Clinical Practice</span>
+              </div>
+              <p class="card-desc">
+                Guides restorative whole-food nutrition, enzyme-rich alkaline diet plans, and natural microflora rejuvenation to restore natural digestive energy and vitality.
+              </p>
+              <div class="card-footer">
+                <span style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600;">Mon &bull; Tue &bull; Thu Consultations</span>
+                <a href="dashboard.html" class="btn btn-outline btn-sm">
+                  <span>Book Diet Plan</span>
+                  <span data-icon="calendar"></span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Doctor 5: Dr. Rajesh Verma -->
+          <article class="card doctor-card">
+            <div class="card-media">
+              <img src="assets/images/doctors-team-rajesh.jpg" alt="Dr. Rajesh Verma, Integrative Naturopathy and Physical Rehabilitation Specialist">
+              <span class="card-badge">Physical Rehab & Fasting</span>
+            </div>
+            <div class="card-body">
+              <div class="doctor-spec">BNYS, MD (Naturopathy)</div>
+              <h3 class="card-title">Dr. Rajesh Verma</h3>
+              <div class="doctor-exp" style="margin-bottom: var(--space-xs);">
+                <span data-icon="sparkles"></span>
+                <span>14 Years Clinical Practice</span>
+              </div>
+              <p class="card-desc">
+                Specializes in non-invasive spinal mobilization, therapeutic water compresses, supervised nutritional fasting, and musculoskeletal recovery protocols.
+              </p>
+              <div class="card-footer">
+                <span style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600;">Wed &bull; Fri &bull; Sat Consultations</span>
+                <a href="dashboard.html" class="btn btn-outline btn-sm">
+                  <span>Book Consultation</span>
+                  <span data-icon="calendar"></span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Doctor 6: Dr. Sunita Rao -->
+          <article class="card doctor-card">
+            <div class="card-media">
+              <img src="assets/images/doctors-team-sunita.jpg" alt="Dr. Sunita Rao, Women's Wellness & Lifestyle Medicine Specialist">
+              <span class="card-badge">Lifestyle Medicine</span>
+            </div>
+            <div class="card-body">
+              <div class="doctor-spec">BNYS, PGD Yoga Therapy</div>
+              <h3 class="card-title">Dr. Sunita Rao</h3>
+              <div class="doctor-exp" style="margin-bottom: var(--space-xs);">
+                <span data-icon="sparkles"></span>
+                <span>11 Years Clinical Practice</span>
+              </div>
+              <p class="card-desc">
+                Focuses on hormonal balance, circadian alignment rituals, restorative breathing techniques, and somatic mindfulness to treat chronic fatigue and burnout.
+              </p>
+              <div class="card-footer">
+                <span style="font-size: var(--text-xs); color: var(--color-forest); font-weight: 600;">Tue &bull; Thu &bull; Sun Consultations</span>
+                <a href="dashboard.html" class="btn btn-outline btn-sm">
+                  <span>Book Consultation</span>
+                  <span data-icon="calendar"></span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3 — AREAS OF PRACTICE
+         Explain the team's relevant areas of practice based on supplied information.
+         Keep the content factual, clean, and simple.
+         ========================================================================== -->
+    <section class="section" style="background-color: var(--color-bg-surface-subtle); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Clinical Expertise</span>
+          <h2 class="section-title">Core Areas of Natural Practice</h2>
+          <p class="section-desc">
+            Our medical team integrates six foundational naturopathic and yogic modalities to deliver cohesive, individualized care without synthetic pharmaceuticals.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Area 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <span data-icon="activity"></span>
+            </div>
+            <h3 class="feature-title">Naturopathic Medicine</h3>
+            <p class="feature-desc">
+              Comprehensive health evaluations assessing personal constitution, vitality levels, and natural lifestyle rhythms in an unhurried, listening environment.
+            </p>
+          </div>
+
+          <!-- Area 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <span data-icon="sparkles"></span>
+            </div>
+            <h3 class="feature-title">Therapeutic Yoga Chikitsa</h3>
+            <p class="feature-desc">
+              Individualized asana alignments, gentle joint mobility regimens, and prop-supported restorative postures to release chronic muscular strain.
+            </p>
+          </div>
+
+          <!-- Area 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <span data-icon="clock"></span>
+            </div>
+            <h3 class="feature-title">Clinical Hydrotherapy</h3>
+            <p class="feature-desc">
+              Temperature-regulated mineral immersion baths, spinal spray therapies, and cold friction packs to support natural lymphatic and vascular circulation.
+            </p>
+          </div>
+
+          <!-- Area 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <span data-icon="heart"></span>
+            </div>
+            <h3 class="feature-title">Acupuncture & Reflexology</h3>
+            <p class="feature-desc">
+              Fine-needle micro-meridian point therapy and foot reflex soaks performed by licensed practitioners to release physical tension and unblock vitality.
+            </p>
+          </div>
+
+          <!-- Area 5 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <span data-icon="fileText"></span>
+            </div>
+            <h3 class="feature-title">Clinical Dietetics & Detox</h3>
+            <p class="feature-desc">
+              Whole-food alkaline broths, seasonal fruit fasts, and personalized digestive rest protocols that nourish cellular tissues and cleanse internal systems.
+            </p>
+          </div>
+
+          <!-- Area 6 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <span data-icon="user"></span>
+            </div>
+            <h3 class="feature-title">Mindful Breath Regulation</h3>
+            <p class="feature-desc">
+              Systematic pranayama breath control and progressive Yoga Nidra relaxation to downregulate sympathetic stress and cultivate emotional calm.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4 — OUR CONSULTATION APPROACH
+         Explain how practitioners listen, understand wellness goals, and guide suitable sessions.
+         Use an editorial layout rather than repeating profile cards.
+         ========================================================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="editorial-split-grid">
+          <!-- Editorial Consultation Image -->
+          <div style="position: relative;">
+            <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-border-subtle); box-shadow: var(--shadow-lg); aspect-ratio: 4/3;">
+              <img src="assets/images/doctors-consult-approach.jpg" alt="Doctor and patient engaged in a calm, collaborative consultation" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="position: absolute; bottom: 1.25rem; inset-inline-start: 1.25rem; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); padding: 0.75rem 1.25rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border-subtle); max-width: 260px;">
+              <div style="font-size: var(--text-xs); font-weight: 700; color: var(--color-forest); margin-bottom: 0.2rem;">
+                Collaborative Medicine
+              </div>
+              <div style="font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4;">
+                We spend time listening before creating your individualized wellness plan.
+              </div>
+            </div>
+          </div>
+
+          <!-- Editorial Approach Narrative -->
+          <div>
+            <span class="section-tag">Care Methodology</span>
+            <h2 class="section-title" style="text-align: start; margin-bottom: var(--space-md);">
+              How We Listen, Understand, and Guide Your Healing
+            </h2>
+            <p style="font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-md);">
+              At Sattva, clinical consultations are never rushed. We recognize that physical tension, irregular sleep, or low energy are often interconnected signs of daily lifestyle imbalance rather than isolated occurrences.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-lg);">
+              <!-- Pillar 1 -->
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 36px; height: 36px; border-radius: var(--radius-md); background: var(--color-sage-subtle); color: var(--color-forest); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: var(--text-sm);">
+                  01
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-md); color: var(--color-text-main); margin-bottom: 0.2rem;">Unhurried Active Listening</h4>
+                  <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                    Your practitioner listens carefully to your personal history, emotional stress triggers, and wellness aspirations without judgment.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Pillar 2 -->
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 36px; height: 36px; border-radius: var(--radius-md); background: var(--color-sage-subtle); color: var(--color-forest); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: var(--text-sm);">
+                  02
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-md); color: var(--color-text-main); margin-bottom: 0.2rem;">Constitutional Understanding</h4>
+                  <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                    We evaluate your body’s unique physical tendencies, posture, and vital capacity to understand what natural therapies will best serve you.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Pillar 3 -->
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <div style="width: 36px; height: 36px; border-radius: var(--radius-md); background: var(--color-sage-subtle); color: var(--color-forest); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: var(--text-sm);">
+                  03
+                </div>
+                <div>
+                  <h4 style="font-size: var(--text-md); color: var(--color-text-main); margin-bottom: 0.2rem;">Empowered Co-Creation</h4>
+                  <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                    Together, we agree on a practical regimen of in-center therapies and achievable home self-care habits that fit seamlessly into your life.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5 — MEETING YOUR PRACTITIONER
+         Explain how patients can choose or be assigned a practitioner, subject to actual center policy.
+         Link to the therapy booking flow.
+         Do not invent availability or appointment guarantees.
+         ========================================================================== -->
+    <section class="section" style="background-color: var(--color-bg-surface-subtle); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Appointment Information</span>
+          <h2 class="section-title">Meeting Your Practitioner</h2>
+          <p class="section-desc">
+            We offer transparent options for connecting with the practitioner who best aligns with your therapeutic goals and scheduling needs.
+          </p>
+        </div>
+
+        <div class="grid-2-equal" style="max-width: 960px; margin-inline: auto;">
+          <!-- Card A: Selecting a Specific Doctor -->
+          <div style="background: var(--color-bg-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--color-forest); margin-bottom: var(--space-sm);">
+              <span data-icon="user"></span>
+              <h3 style="font-size: var(--text-lg); margin: 0;">Requesting a Specific Physician</h3>
+            </div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; margin-bottom: var(--space-md);">
+              If you have worked with a specific practitioner previously or wish to consult a specialist in yoga therapy, hydrotherapy, or clinical dietetics, you can select their name directly during the booking process.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-sm); border-top: 1px solid var(--color-border-subtle); font-size: var(--text-xs); color: var(--color-text-subtle);">
+              Subject to individual physician clinic hours and schedule availability.
+            </div>
+          </div>
+
+          <!-- Card B: Coordinated Clinic Assignment -->
+          <div style="background: var(--color-bg-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--color-forest); margin-bottom: var(--space-sm);">
+              <span data-icon="heart"></span>
+              <h3 style="font-size: var(--text-lg); margin: 0;">Assigned Clinical Care</h3>
+            </div>
+            <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; margin-bottom: var(--space-md);">
+              For first-time visits or general natural wellness assessments, our medical desk will assign you to an available physician best suited to review your initial health intake and coordinate your therapy sequence.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-sm); border-top: 1px solid var(--color-border-subtle); font-size: var(--text-xs); color: var(--color-text-subtle);">
+              Assigned practitioners maintain continuous records inside your Patient Portal.
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--space-xl);">
+          <a href="dashboard.html" class="btn btn-primary btn-lg">
+            <span data-icon="calendar"></span>
+            <span>Proceed to Therapy Booking</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6 — BOOK A CONSULTATION
+         Premium CTA section.
+         Primary CTA: “Book a Therapy”.
+         Existing patients can use Login to access their dashboard.
+         ========================================================================== -->
+    <section class="section-lg">
+      <div class="container">
+        <div class="cta-box-h1">
+          <div style="max-width: 720px; margin-inline: auto;">
+            <span style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.95rem; border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.15); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-md); color: #E8F0EA;">
+              Individualized Care
+            </span>
+            <h2 style="font-size: var(--text-3xl); color: #FFFFFF; margin-bottom: var(--space-md); line-height: 1.2;">
+              Begin With a Guided Professional Consultation
+            </h2>
+            <p style="font-size: var(--text-md); color: #D1E0D5; margin-bottom: var(--space-xl); line-height: 1.7; max-width: 58ch; margin-inline: auto;">
+              Our practitioners are here to listen, support, and guide your journey to natural wellbeing with kindness and clinical precision.
+            </p>
+            <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-lg);">
+              <a href="dashboard.html" class="btn btn-secondary btn-lg">
+                <span data-icon="calendar"></span>
+                <span>Book a Therapy</span>
+              </a>
+              <a href="login.html" class="btn btn-outline btn-lg">
+                <span data-icon="user"></span>
+                <span>Login</span>
+              </a>
+            </div>
+            <div style="font-size: var(--text-xs); color: #A8C2B0;">
+              Appointments confirmed through your Patient Portal &bull; Flexible scheduling &bull; No referral required
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+          <a href="index.html" class="nav-brand" aria-label="Sattva NATUROPATHY & YOGA">
+          <svg class="nav-brand-logo sattva-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="doctors_foot_gold" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#DEB76C" />
+      <stop offset="40%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#9E7832" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="doctors_foot_leafL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+    <linearGradient id="doctors_foot_leafR" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#123B26" />
+      <stop offset="60%" stop-color="#1B5635" />
+      <stop offset="100%" stop-color="#246E44" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="50" r="41" stroke="url(#doctors_foot_gold)" stroke-width="2.6" fill="none" />
+  <g class="sattva-figure" fill="var(--sattva-forest, #143D28)">
+    <circle cx="60" cy="33.5" r="5.6" />
+    <path d="M 60 40.5 C 57.5 40.5 52 42.5 49 46.5 C 46.8 49.5 44 55.5 43 59 C 42 60.5 44.5 61.5 46 60 C 48 58 50.5 53.5 52 50 C 52.2 52.5 52 57.5 51 60 C 46 61.5 38.5 62.5 35 65 C 32.5 66.8 34.5 69.5 38.5 69.5 C 45 69.5 54 67.5 60 67.5 C 66 67.5 75 69.5 81.5 69.5 C 85.5 69.5 87.5 66.8 85 65 C 81.5 62.5 74 61.5 69 60 C 68 57.5 67.8 52.5 68 50 C 69.5 53.5 72 58 74 60 C 75.5 61.5 78 60.5 77 59 C 76 55.5 73.2 49.5 71 46.5 C 68 42.5 62.5 40.5 60 40.5 Z" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 39 52 C 37 47 36 41 39.5 37.5 C 43 41 42.5 47 39 52 Z" />
+    <path d="M 37.5 49 C 35 46.5 33 44 34 40.5 C 36.5 42.5 37.5 46 37.5 49 Z" />
+    <path d="M 38.5 52 C 38 54 37 56 36.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <g class="sattva-sprout" fill="var(--sattva-sprout, #4E8752)">
+    <path d="M 81 52 C 83 47 84 41 80.5 37.5 C 77 41 77.5 47 81 52 Z" />
+    <path d="M 82.5 49 C 85 46.5 87 44 86 40.5 C 83.5 42.5 82.5 46 82.5 49 Z" />
+    <path d="M 81.5 52 C 82 54 83 56 83.5 58" stroke="var(--sattva-sprout, #4E8752)" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  </g>
+  <path d="M 60 88 C 51 86 33 80 20 62 C 18.5 60.5 20 59.5 21.5 60.5 C 31 67.5 46 76 60 78 C 58 82 59 86 60 88 Z" fill="url(#doctors_foot_leafL)" />
+  <path d="M 58 85 C 46 78 33 71 21.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 40 73 C 44 71 47 69 49 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 33 67 C 36 65 39 64 42 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 60 88 C 69 86 87 80 100 62 C 101.5 60.5 100 59.5 98.5 60.5 C 89 67.5 74 76 60 78 C 62 82 61 86 60 88 Z" fill="url(#doctors_foot_leafR)" />
+  <path d="M 62 85 C 74 78 87 71 98.5 60.5" stroke="var(--sattva-vein, rgba(255,255,255,0.85))" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <path d="M 80 73 C 76 71 73 69 71 68" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  <path d="M 87 67 C 84 65 81 64 78 63" stroke="var(--sattva-vein-sub, rgba(255,255,255,0.45))" stroke-width="0.8" stroke-linecap="round" fill="none" />
+</svg>
+          <span class="sattva-divider" aria-hidden="true"></span>
+          <div class="nav-brand-text">
+            <span class="nav-brand-title">Sattv<span class="sattva-leaf-accent-wrap">a<svg class="sattva-leaf-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21 C3 21 5 12 14 7 C 19 4 22 2 22 2 C 22 2 20 7 17 12 C 12 20 3 21 3 21 Z" fill="var(--sattva-leaf-accent, #4E8752)" /><path d="M6 18 C 9 14 15 9 20 3" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" stroke-linecap="round" /></svg></span></span>
+            <span class="nav-brand-subtitle">NATUROPATHY &amp; YOGA</span>
+          </div>
+        </a>
+          <p class="footer-brand-desc">
+            Rooted in authentic yogic science and certified naturopathic medicine, Sattva provides tranquil sanctuary healing to restore vitality, mental clarity, and constitutional balance.
+          </p>
+
+          <!-- Social Media Icons in Footer -->
+          <div class="footer-social-links" aria-label="Social Media Links">
+            <a href="https://instagram.com" class="footer-social-btn" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+              <span data-icon="instagram"></span>
+            </a>
+            <a href="https://facebook.com" class="footer-social-btn" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+              <span data-icon="facebook"></span>
+            </a>
+            <a href="https://youtube.com" class="footer-social-btn" aria-label="Subscribe on YouTube" target="_blank" rel="noopener noreferrer">
+              <span data-icon="youtube"></span>
+            </a>
+            <a href="https://linkedin.com" class="footer-social-btn" aria-label="Connect on LinkedIn" target="_blank" rel="noopener noreferrer">
+              <span data-icon="linkedin"></span>
+            </a>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+            <span style="background: rgba(183, 190, 145, 0.15); color: #B7BE91; padding: 0.35rem 0.75rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600;">NABH Accredited</span>
+            <span style="background: rgba(183, 190, 145, 0.15); color: #B7BE91; padding: 0.35rem 0.75rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600;">BNYS Certified</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home 1 — The Natural Path</a></li>
+            <li><a href="home-2.html" class="footer-link">Home 2 — A Space to Reconnect</a></li>
+            <li><a href="about.html" class="footer-link">About Sanctuary</a></li>
+            <li><a href="therapies.html" class="footer-link">Therapies</a></li>
+            <li><a href="doctors.html" class="footer-link">Doctors</a></li>
+            <li><a href="contact.html" class="footer-link">Contact & Location</a></li>
+            <li><a href="login.html" class="footer-link">Login</a></li>
+            <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Therapies</h4>
+          <ul class="footer-links">
+            <li><a href="therapies.html#naturopathy" class="footer-link">Naturopathy Consultation</a></li>
+            <li><a href="therapies.html#yoga-therapy" class="footer-link">Therapeutic Yoga Chikitsa</a></li>
+            <li><a href="therapies.html#hydrotherapy" class="footer-link">Hydrotherapy Immersion</a></li>
+            <li><a href="therapies.html#acupuncture" class="footer-link">Acupuncture & Points</a></li>
+            <li><a href="therapies.html#nutrition" class="footer-link">Clinical Dietetics</a></li>
+            <li><a href="therapies.html#breathwork" class="footer-link">Pranayama Breathwork</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Center & Hours</h4>
+          <div class="footer-contact-item">
+            <span data-icon="mapPin"></span>
+            <span>42 Serene Grove Way, Green Valley Nature Reserve</span>
+          </div>
+          <div class="footer-contact-item">
+            <span data-icon="phone"></span>
+            <span>+1 (800) 428-7662 / +91 (80) 2845-7700</span>
+          </div>
+          <div class="footer-contact-item">
+            <span data-icon="mail"></span>
+            <span>care@sattvanaturopathy.org</span>
+          </div>
+          <div class="footer-contact-item">
+            <span data-icon="clock"></span>
+            <span>Mon – Sat: 6:30 AM – 7:30 PM<br>Sunday: 7:00 AM – 1:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Sattva Naturopathy & Yoga Therapy Center. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Care</a>
+          <a href="#" class="footer-link">Medical Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <span data-icon="arrowUp"></span>
+  </button>
+
+  <script src="js/icons.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navigation.js"></script>
+</body>
+</html>
