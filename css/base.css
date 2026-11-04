@@ -38,9 +38,8 @@ body {
   position: relative;
 }
 
-img, picture, video {
+img, picture, video, canvas, iframe {
   max-width: 100%;
-  height: auto;
   display: block;
 }
 
