@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
   <title>Patient Dashboard — Sattva Naturopathy & Yoga Therapy</title>
   <meta name="description" content="Patient dashboard for managing therapy bookings, viewing appointments, tracking treatment plans, and downloading receipts.">
   
@@ -160,13 +161,17 @@
 
         <!-- Light/Dark Mode Toggle -->
         <button class="btn-icon theme-btn" data-action="toggle-theme" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
-          <span class="theme-icon" data-icon="moon"></span>
+          <span class="theme-icon" data-icon="moon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
         </button>
+
+        <a href="#profile" onclick="switchTab('profile')" class="dash-profile-btn dash-profile-icon-btn" aria-label="Profile" title="Profile">
+          <span data-icon="user"></span>
+        </a>
 
         <!-- Logout Button -->
         <a href="login.html" onclick="handleLogout(event)" class="dash-logout-btn" aria-label="Sign Out" title="Sign Out">
-          <span data-icon="logOut"></span>
-          <span>Logout</span>
+          <span class="dash-logout-icon" data-icon="logOut"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+          <span class="dash-logout-text">Logout</span>
         </a>
       </div>
     </header>
@@ -261,6 +266,10 @@
               Questions regarding current packs or detox symptoms? Clinic hotline: <strong>ext. 402</strong>
             </div>
           </div>
+          <a href="login.html" onclick="handleLogout(event)" class="dash-logout-btn dash-sidebar-logout-btn">
+            <span class="dash-logout-icon" data-icon="logOut"></span>
+            <span class="dash-logout-text">Logout</span>
+          </a>
         </div>
       </aside>
 
@@ -373,13 +382,13 @@
             </div>
 
             <div class="dash-table-card">
-              <table class="dash-table">
+              <table class="dash-table dash-table--overview">
                 <thead>
                   <tr>
-                    <th>Therapy</th>
-                    <th>Date & Time</th>
-                    <th>Doctor / Practitioner</th>
-                    <th>Status</th>
+                    <th scope="col">Therapy</th>
+                    <th scope="col">Date &amp; Time</th>
+                    <th scope="col">Doctor / Practitioner</th>
+                    <th scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody id="overviewTableBody">
@@ -492,15 +501,15 @@
 
           <!-- Appointments Table -->
           <div class="dash-table-card">
-            <table class="dash-table">
+            <table class="dash-table dash-table--appointments">
               <thead>
                 <tr>
-                  <th>Therapy & Procedure</th>
-                  <th>Date & Time</th>
-                  <th>Practitioner</th>
-                  <th>Location Suite</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th scope="col">Therapy &amp; Procedure</th>
+                  <th scope="col">Date &amp; Time</th>
+                  <th scope="col">Practitioner</th>
+                  <th scope="col">Location / Suite</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody id="appointmentsTableBody">
@@ -875,6 +884,7 @@
 
     // Tab Switching Logic
     const VALID_TABS = ['overview', 'book-therapy', 'appointments', 'treatment-plans', 'receipts', 'profile'];
+    let activeAppointmentFilter = 'all';
 
     function switchTab(tabId) {
       if (!VALID_TABS.includes(tabId)) tabId = 'overview';
@@ -885,6 +895,8 @@
       // Show selected pane
       const pane = document.getElementById('tab-' + tabId);
       if (pane) pane.style.display = 'block';
+
+      if (tabId === 'appointments') renderAppointments(activeAppointmentFilter);
 
       // Update sidebar active classes
       document.querySelectorAll('.dash-sidebar .dash-nav-link').forEach(link => {
@@ -971,6 +983,7 @@
       document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
       const activeBtn = document.getElementById('filter' + type.charAt(0).toUpperCase() + type.slice(1));
       if (activeBtn) activeBtn.classList.add('active');
+      activeAppointmentFilter = type;
       renderAppointments(type);
     }
 
@@ -1057,7 +1070,8 @@ Note:           This document is provided for medical tax reporting
       localStorage.setItem('sattva_patient_phone', phone);
 
       // Update UI elements
-      document.getElementById('navProfileName').textContent = name;
+      const navProfileName = document.getElementById('navProfileName');
+      if (navProfileName) navProfileName.textContent = name;
       document.getElementById('welcomeHeading').textContent = 'Welcome back, ' + name.split(' ')[0];
       document.getElementById('profileDisplayName').textContent = name;
 
@@ -1092,13 +1106,15 @@ Note:           This document is provided for medical tax reporting
       const savedName = localStorage.getItem('sattva_patient_name');
       const savedUHID = localStorage.getItem('sattva_patient_uhid');
       if (savedName) {
-        document.getElementById('navProfileName').textContent = savedName;
+        const navProfileName = document.getElementById('navProfileName');
+        if (navProfileName) navProfileName.textContent = savedName;
         document.getElementById('welcomeHeading').textContent = 'Welcome back, ' + savedName.split(' ')[0];
         document.getElementById('profileDisplayName').textContent = savedName;
         document.getElementById('profName').value = savedName;
       }
       if (savedUHID) {
-        document.getElementById('navProfileUHID').textContent = 'UHID: ' + savedUHID;
+        const navProfileUHID = document.getElementById('navProfileUHID');
+        if (navProfileUHID) navProfileUHID.textContent = 'UHID: ' + savedUHID;
         document.getElementById('profileDisplayUHID').textContent = 'UHID: ' + savedUHID;
       }
 

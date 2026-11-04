@@ -115,6 +115,19 @@
   background-color: var(--color-sage-subtle);
 }
 
+.dash-profile-icon-btn {
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+.dash-profile-icon-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
 .dash-profile-avatar {
   width: 32px;
   height: 32px;
@@ -143,19 +156,43 @@
 .dash-logout-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.45rem;
   font-size: var(--text-xs);
   font-weight: var(--font-weight-medium);
-  padding: 0.45rem 0.85rem;
+  height: 40px;
+  padding: 0 0.85rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border-medium);
-  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-main);
+  text-decoration: none;
   transition: all var(--transition-fast);
+}
+
+.dash-logout-btn .dash-logout-icon,
+.dash-logout-btn [data-icon="logOut"] {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dash-logout-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block !important;
+  color: var(--color-text-main);
+  transition: color var(--transition-fast);
 }
 
 .dash-logout-btn:hover {
   background-color: rgba(170, 71, 62, 0.08);
   border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.dash-logout-btn:hover svg {
   color: var(--color-danger);
 }
 
@@ -262,6 +299,12 @@
 .dash-sidebar-footer {
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border-subtle);
+}
+
+.dash-sidebar-logout-btn {
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: var(--space-sm);
 }
 
 .dash-emergency-card {
@@ -371,11 +414,30 @@
   .dash-profile-btn {
     display: none; /* Brief constraint: "Keep the profile control out of the navbar if it causes crowding." */
   }
-  .dash-logout-btn span {
-    display: none; /* Icon only */
+  .dash-logout-btn .dash-logout-text {
+    display: none !important; /* Hide text, keep icon */
   }
   .dash-logout-btn {
-    padding: 0.45rem;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: var(--radius-md) !important;
+  }
+  .dash-logout-btn .dash-logout-icon,
+  .dash-logout-btn [data-icon="logOut"],
+  .dash-logout-btn [data-icon] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .dash-logout-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    display: block !important;
   }
 }
 
@@ -390,6 +452,29 @@
   .dash-nav-actions {
     gap: 0.35rem;
   }
+  .dash-logout-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    padding: 0 !important;
+  }
+  .dash-logout-btn svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .dash-logout-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    padding: 0 !important;
+  }
+  .dash-logout-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
 }
 
 @media (max-width: 320px) {
@@ -401,7 +486,14 @@
     height: 26px;
   }
   .dash-logout-btn {
-    padding: 0.35rem;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+  }
+  .dash-logout-btn svg {
+    width: 15px !important;
+    height: 15px !important;
   }
 }
 
@@ -411,6 +503,16 @@
   }
   .dash-navbar {
     padding-inline: 0.25rem;
+  }
+  .dash-logout-btn {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 0 !important;
+  }
+  .dash-logout-btn svg {
+    width: 14px !important;
+    height: 14px !important;
   }
 }
 
@@ -567,11 +669,29 @@
   text-align: start;
 }
 
+.dash-table--overview {
+  min-width: 640px;
+  table-layout: fixed;
+}
+
+.dash-table--appointments {
+  min-width: 900px;
+  table-layout: fixed;
+}
+
+.dash-table--appointments th:nth-child(1) { width: 27%; }
+.dash-table--appointments th:nth-child(2) { width: 16%; }
+.dash-table--appointments th:nth-child(3) { width: 19%; }
+.dash-table--appointments th:nth-child(4) { width: 17%; }
+.dash-table--appointments th:nth-child(5) { width: 11%; }
+.dash-table--appointments th:nth-child(6) { width: 10%; }
+
 .dash-table th,
 .dash-table td {
   padding: 0.9rem 1.25rem;
   border-bottom: 1px solid var(--color-border-subtle);
   font-size: var(--text-sm);
+  vertical-align: middle;
 }
 
 .dash-table th {
@@ -581,6 +701,7 @@
   text-transform: uppercase;
   font-size: var(--text-xs);
   letter-spacing: 0.04em;
+  line-height: 1.4;
 }
 
 .dash-table tr:last-child td {
@@ -737,9 +858,8 @@
   color-scheme: dark;
 }
 
-[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) brightness(1.2);
+[data-theme="dark"] #bookDate::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1) !important;
   cursor: pointer;
-  opacity: 0.95;
+  opacity: 1;
 }
-
