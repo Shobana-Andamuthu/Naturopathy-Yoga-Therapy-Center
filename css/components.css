@@ -384,6 +384,23 @@
   gap: 0.4rem;
 }
 
+/* Ensure calendar icon inside Book a Therapy buttons is always crisp white */
+.nav-cta [data-icon="calendar"],
+.nav-cta [data-icon="calendar"] svg,
+.btn-primary [data-icon="calendar"],
+.btn-primary [data-icon="calendar"] svg,
+.btn-secondary [data-icon="calendar"],
+.btn-secondary [data-icon="calendar"] svg,
+.mobile-drawer-cta .btn-primary [data-icon="calendar"],
+.mobile-drawer-cta .btn-primary [data-icon="calendar"] svg,
+a.btn-primary [data-icon="calendar"],
+a.btn-primary [data-icon="calendar"] svg,
+button.btn-primary [data-icon="calendar"],
+button.btn-primary [data-icon="calendar"] svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
 .nav-cta:hover {
   background-color: var(--color-forest-hover);
   transform: translateY(-1px);
